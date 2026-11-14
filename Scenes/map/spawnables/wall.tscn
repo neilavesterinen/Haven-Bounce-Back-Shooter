@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://be3vedgin3xcx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nxkso"]
+size = Vector2(20, 296)
+
+[sub_resource type="Gradient" id="Gradient_r08gi"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nxkso"]
+gradient = SubResource("Gradient_r08gi")
+
+[node name="Box" type="Node2D" unique_id=148261330]
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1320225251]
+collision_layer = 2147483648
+collision_mask = 2147483648
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1903933336]
+position = Vector2(0, 138)
+scale = Vector2(5.1980543, 1.2182456)
+shape = SubResource("RectangleShape2D_nxkso")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1091268111]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1863459815]
+position = Vector2(0, 138)
+shape = SubResource("RectangleShape2D_nxkso")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D" unique_id=389593094]
+position = Vector2(0, 7.6293945e-06)
+scale = Vector2(0.078125, 295.99997)
+texture = SubResource("GradientTexture1D_nxkso")
