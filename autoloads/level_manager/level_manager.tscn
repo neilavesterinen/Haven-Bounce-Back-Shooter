@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bxrag2lqckbb5"]
+
+[ext_resource type="Script" uid="uid://b2lu8jihle8c7" path="res://autoloads/level_manager/level_manager.gd" id="1_v3u8m"]
+
+[node name="LevelManager" type="Node" unique_id=859127138]
+script = ExtResource("1_v3u8m")
+levels = Array[String]([""])

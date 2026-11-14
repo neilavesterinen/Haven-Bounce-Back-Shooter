@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cdnyw3kbutq8b"]
 
-[ext_resource type="Script" uid="uid://c65phawhpbjnk" path="res://upgrade_shop/upgrade_purchase_button.gd" id="1_56tmu"]
+[ext_resource type="Script" uid="uid://rnps3qvd7t6g" path="res://upgrade_shop/upgrade_purchase_button.gd" id="1_56tmu"]
 
 [node name="UpgradeShop" type="Control" unique_id=1262347264]
 layout_mode = 3
