@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://b7hi1a0r6apgs"]
+
+[ext_resource type="Theme" uid="uid://c3ncu5c4bs85t" path="res://main_theme.theme" id="1_vasse"]
+[ext_resource type="Script" uid="uid://bg75ucid01t6d" path="res://Scenes/mainmenu/label.gd" id="2_552u2"]
+
+[node name="Mainmenu" type="CanvasLayer" unique_id=1407059017]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=523416043]
+offset_right = 1153.0
+offset_bottom = 1153.0
+color = Color(0.2520276, 0.25202766, 0.25202763, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=506499756]
+offset_left = -119.00001
+offset_top = -65.0
+offset_right = 1270.7833
+offset_bottom = 176.01315
+rotation = -0.06587538
+scale = Vector2(0.9955796, 1.0424879)
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1179392157]
+offset_left = 56.999996
+offset_top = 43.0
+offset_right = 517.0
+offset_bottom = 155.0
+rotation = -0.050822586
+theme = ExtResource("1_vasse")
+theme_override_colors/font_shadow_color = Color(0.38142636, 1, 0.93270206, 1)
+theme_override_font_sizes/font_size = 80
+text = "Bounce Back"
+script = ExtResource("2_552u2")

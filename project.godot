@@ -36,6 +36,19 @@ window/stretch/aspect="expand"
 
 enabled=PackedStringArray("res://addons/GDQuest_GDScript_formatter/plugin.cfg", "res://addons/gittydot/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://Firjar/": "gray",
+"res://Scenes/": "blue",
+"res://addons/": "gray",
+"res://autoloads/": "purple"
+}
+
+[gui]
+
+theme/custom="uid://c3ncu5c4bs85t"
+
 [layer_names]
 
 2d_physics/layer_32="building collision"
