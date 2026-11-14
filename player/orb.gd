@@ -3,6 +3,8 @@ class_name Orb
 
 var player: Player
 
+var enemies: Array
+
 var target_position: Vector2
 
 var SPEED := 10.0
@@ -11,10 +13,17 @@ var bouncing_back := false
 
 var speed_increase_time := 0.0
 
+var bounces := 2
+
+
+func _ready() -> void:
+	enemies = get_tree().get_nodes_in_group("enemy")
+
+
 func _process(delta: float) -> void:
 	if bouncing_back:
 		speed_increase_time += delta
-	
+
 	var target: Vector2
 	if bouncing_back and player:
 		target = player.global_position
@@ -35,9 +44,14 @@ func _process(delta: float) -> void:
 		and global_position.y < target_position.y + 50 and global_position.y
 		> target_position.y - 50
 	):
+		#if bounces == 0:
 		bouncing_back = true
 		set_axis_velocity(Vector2())
-		apply_impulse(global_position.direction_to(player.global_position) * 400)
+		if player:
+			apply_impulse(global_position.direction_to(player.global_position) * 400)
+		#else:
+		#	target_position = enemies[0].position
+		#	bounces -= 1
 
 	if bouncing_back and player:
 		if (
@@ -48,3 +62,16 @@ func _process(delta: float) -> void:
 		):
 			player.orb_count += 1
 			queue_free()
+
+
+func _on_body_entered(body: Enemy) -> void:
+	if body.is_in_group("enemy"):
+		body.health -= 1
+		#if bounces == 0:
+		bouncing_back = true
+		set_axis_velocity(Vector2())
+		if player:
+			apply_impulse(global_position.direction_to(player.global_position) * 400)
+		#else:
+		#target_position = enemies[0].position
+		#bounces -= 1
