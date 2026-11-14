@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://ch0nah582l38w"]
+
+[ext_resource type="Script" uid="uid://xjwh0kajg387" path="res://autoloads/transition_manager/transition_manager.gd" id="1_pt1kq"]
+[ext_resource type="Script" uid="uid://bmruxgormof8p" path="res://autoloads/transition_manager/transition_entry.gd" id="2_s1odp"]
+[ext_resource type="PackedScene" uid="uid://do3nj0ujw5b0w" path="res://autoloads/transition_manager/transitions/lt_square_grow_transition.tscn" id="3_5p3t2"]
+[ext_resource type="Script" uid="uid://dr4fovwr22qeb" path="res://autoloads/transition_manager/transition_go_on_level_load.gd" id="3_ww4ap"]
+[ext_resource type="PackedScene" uid="uid://d3qa0nrg5boqu" path="res://autoloads/transition_manager/transitions/fade_transition.tscn" id="4_5p3t2"]
+
+[sub_resource type="Resource" id="Resource_i16de"]
+script = ExtResource("2_s1odp")
+name = &"lt_square_grow"
+scene = ExtResource("3_5p3t2")
+metadata/_custom_type_script = "uid://bmruxgormof8p"
+
+[sub_resource type="Resource" id="Resource_mygs6"]
+script = ExtResource("2_s1odp")
+name = &"fade"
+scene = ExtResource("4_5p3t2")
+metadata/_custom_type_script = "uid://bmruxgormof8p"
+
+[node name="TransitionManagerWhole" type="Node" unique_id=1804709543 node_paths=PackedStringArray("transition_parent")]
+script = ExtResource("1_pt1kq")
+transitions = Array[ExtResource("2_s1odp")]([SubResource("Resource_i16de"), SubResource("Resource_mygs6")])
+transition_parent = NodePath("TransitionCanvas")
+
+[node name="TransitionCanvas" type="CanvasLayer" parent="." unique_id=2096030899]
+layer = 3001
+
+[node name="TransitionGoOnLevelLoad" type="Node" parent="." unique_id=747616652]
+script = ExtResource("3_ww4ap")
