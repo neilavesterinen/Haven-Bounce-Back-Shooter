@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cpd1qvk3bc02x"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_vcy0d"]
+points = PackedVector2Array(-180, -21, -180, 34, -159, 58, -123, 58, -106, 28, -110, -16, -128, -44, -161, -43)
+
+[node name="Box" type="Node2D" unique_id=148261330]
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1320225251]
+collision_layer = 2147483648
+collision_mask = 2147483648
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1351724873]
+position = Vector2(228, -11)
+scale = Vector2(1.6000018, 1.6000018)
+shape = SubResource("ConvexPolygonShape2D_vcy0d")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1091268111]
+position = Vector2(143, -142)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1863459815]
+position = Vector2(0, 138)
+shape = SubResource("ConvexPolygonShape2D_vcy0d")
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionShape2D" unique_id=635613058]
+position = Vector2(4.437957, 2.026558e-06)
+scale = Vector2(1.0324335, 1.0000002)
+polygon = PackedVector2Array(-180, -21, -180, 34, -159, 58, -123, 58, -106, 28, -110, -16, -128, -44, -161, -43)
+uv = PackedVector2Array(-185, -11, -184, 35, -165, 58, -133, 60, -111, 41, -110, -16, -125, -44, -161, -45)

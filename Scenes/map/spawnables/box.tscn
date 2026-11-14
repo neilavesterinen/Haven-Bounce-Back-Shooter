@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://b8blidf32gu0k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nxkso"]
+radius = 252.04959
+
+[node name="Box" type="Node2D" unique_id=148261330]
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1320225251]
+collision_layer = 2147483648
+collision_mask = 2147483648
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1769823344]
+position = Vector2(-94, 242)
+scale = Vector2(1.6173074, 1.6173074)
+shape = SubResource("CircleShape2D_nxkso")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1014152404]
+position = Vector2(68, 55.000004)
+rotation = 0.21880427
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D" unique_id=10640661]
+polygon = PackedVector2Array(-184.25397, -1.4690018, -137.06396, -11.149002, -1.5439453, 33.620995, -43.122406, 54.703033, -87.45398, 77.18099, -147.95398, 49.350998, -203.61395, 94.120995, -278.63397, 73.551)
+uv = PackedVector2Array(-184.25397, -1.4690018, -137.06396, -11.149002, -1.5439453, 33.620995, -87.45398, 77.18099, -147.95398, 49.350998, -203.61395, 94.120995, -278.63397, 73.551)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1826229899]
+polygon = PackedVector2Array(-184.25397, -1.4690018, -137.06396, -11.149002, -1.5439453, 33.620995, -43.122406, 54.703033, -87.45398, 77.18099, -147.95398, 49.350998, -203.61395, 94.120995, -278.63397, 73.551)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=2094674290]
+position = Vector2(-6, 477.00003)
+rotation = 2.3359537
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D2" unique_id=912771085]
+polygon = PackedVector2Array(-184.25397, -1.4690018, -137.06396, -11.149002, -1.5439453, 33.620995, -43.122406, 54.703033, -87.45398, 77.18099, -147.95398, 49.350998, -203.61395, 94.120995, -278.63397, 73.551)
+uv = PackedVector2Array(-184.25397, -1.4690018, -137.06396, -11.149002, -1.5439453, 33.620995, -87.45398, 77.18099, -147.95398, 49.350998, -203.61395, 94.120995, -278.63397, 73.551)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2" unique_id=714558147]
+polygon = PackedVector2Array(-184.25397, -1.4690018, -137.06396, -11.149002, -1.5439453, 33.620995, -43.122406, 54.703033, -87.45398, 77.18099, -147.95398, 49.350998, -203.61395, 94.120995, -278.63397, 73.551)
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=627065077]
+position = Vector2(-350, 176.99998)
+rotation = 4.4308243
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D3" unique_id=1807693435]
+polygon = PackedVector2Array(-184.25397, -1.4690018, -137.06396, -11.149002, -1.5439453, 33.620995, -43.122406, 54.703033, -87.45398, 77.18099, -147.95398, 49.350998, -203.61395, 94.120995, -278.63397, 73.551)
+uv = PackedVector2Array(-184.25397, -1.4690018, -137.06396, -11.149002, -1.5439453, 33.620995, -87.45398, 77.18099, -147.95398, 49.350998, -203.61395, 94.120995, -278.63397, 73.551)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D3" unique_id=2084981276]
+polygon = PackedVector2Array(-184.25397, -1.4690018, -137.06396, -11.149002, -1.5439453, 33.620995, -43.122406, 54.703033, -87.45398, 77.18099, -147.95398, 49.350998, -203.61395, 94.120995, -278.63397, 73.551)
