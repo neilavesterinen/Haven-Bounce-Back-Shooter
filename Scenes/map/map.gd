@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var spawnregion: NavigationRegion2D = $spawnreg
+@onready var nav_region: NavigationRegion2D = $Navigation
 
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
@@ -14,6 +15,8 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print("Map.gd ready!")
+	
+func generate_map():
 	if random_buildings.is_empty():
 		print("empty random buildings")
 		return
@@ -22,7 +25,7 @@ func _ready() -> void:
 	for i in randcount:
 		var randoms: PackedScene = random_buildings.pick_random()
 		var building: Node2D = randoms.instantiate()
-		add_child(building)
+		$Navigation.add_child(building)
 		
 		var atts: int = 0
 		while atts < 150:

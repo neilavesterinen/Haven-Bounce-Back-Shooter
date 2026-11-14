@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dvqkokn7366uf" path="res://Scenes/map/map.gd" id="1_jhl4n"]
 [ext_resource type="Shader" uid="uid://btk1hf5455ig" path="res://Scenes/map/checkerboard.gdshader" id="2_xjp1v"]
+[ext_resource type="PackedScene" uid="uid://ca3fe5qwrfnmj" path="res://enemy/enemy.tscn" id="3_xjp1v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q5it0"]
 shader = ExtResource("2_xjp1v")
@@ -20,6 +21,11 @@ size = Vector2(50, 6000)
 vertices = PackedVector2Array(2939.9766, 2926.0078, -2844.0625, 2933.9766, -2879.9297, -2899.0234, 2932.0078, -2914.9688)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-2890, -2909, 2942, -2925, 2950, 2936, -2854, 2944)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_vcy0d"]
+vertices = PackedVector2Array(2985, 3000.9766, -2938.0078, 2994.0078, -2944.9922, -2979, 2985, -2979)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-2948, 3004, 2995, 3011, 2995, -2989, -2955, -2989)])
 
 [node name="Map" type="Node2D" unique_id=1935690632]
 script = ExtResource("1_jhl4n")
@@ -101,3 +107,15 @@ offset_bottom = 4511.0
 
 [node name="spawnreg" type="NavigationRegion2D" parent="." unique_id=24127064]
 navigation_polygon = SubResource("NavigationPolygon_nxkso")
+
+[node name="Navigation" type="NavigationRegion2D" parent="." unique_id=1573960272]
+navigation_polygon = SubResource("NavigationPolygon_vcy0d")
+
+[node name="Enemy" parent="." unique_id=1634294982 instance=ExtResource("3_xjp1v")]
+position = Vector2(1290, -351)
+
+[node name="Enemy2" parent="." unique_id=2125955232 instance=ExtResource("3_xjp1v")]
+position = Vector2(1287, -100)
+
+[node name="Enemy3" parent="." unique_id=1215502127 instance=ExtResource("3_xjp1v")]
+position = Vector2(1284, 234)
