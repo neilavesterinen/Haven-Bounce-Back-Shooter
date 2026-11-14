@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GameState="*uid://b8wivnhyoarqb"
 UpgradeManager="*uid://bc12lhcf1rxw0"
+LevelManager="*uid://bxrag2lqckbb5"
 
 [debug]
 

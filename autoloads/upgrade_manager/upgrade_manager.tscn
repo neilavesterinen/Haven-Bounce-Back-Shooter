@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bc12lhcf1rxw0"]
 
 [ext_resource type="Script" uid="uid://bra7cedw8xlx8" path="res://autoloads/upgrade_manager/upgrade_manager.gd" id="1_e8g8g"]
-[ext_resource type="Script" uid="uid://6mpmto5nwiok" path="res://upgrade_shop/upgrade.gd" id="2_elkpn"]
+[ext_resource type="Script" uid="uid://io38gkndc12b" path="res://upgrade_shop/upgrade.gd" id="2_elkpn"]
 
 [sub_resource type="Resource" id="Resource_nmq5w"]
 script = ExtResource("2_elkpn")

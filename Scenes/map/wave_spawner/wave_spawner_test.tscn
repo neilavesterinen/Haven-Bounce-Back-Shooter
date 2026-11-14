@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://lnbnkgq0vssg"]
+
+[ext_resource type="Script" uid="uid://d28bg3buhu30p" path="res://Scenes/map/wave_spawner/wave_spawner.gd" id="1_y7ajy"]
+[ext_resource type="Script" uid="uid://bqoc6g3unwrl1" path="res://Scenes/map/wave_spawner/wave.gd" id="2_gteyi"]
+[ext_resource type="Script" uid="uid://8t34r8tlnd6q" path="res://Scenes/map/wave_spawner/node_and_amount.gd" id="3_6rrgx"]
+[ext_resource type="PackedScene" uid="uid://m3158ygpm4cf" path="res://box.tscn" id="4_yi3ys"]
+[ext_resource type="PackedScene" uid="uid://be3vedgin3xcx" path="res://Scenes/map/spawnables/wall.tscn" id="5_rcgyr"]
+[ext_resource type="PackedScene" uid="uid://cpd1qvk3bc02x" path="res://Scenes/map/spawnables/tri.tscn" id="6_gteyi"]
+
+[sub_resource type="Resource" id="Resource_udaev"]
+script = ExtResource("3_6rrgx")
+node = ExtResource("4_yi3ys")
+amount = 3
+
+[sub_resource type="Resource" id="Resource_r027e"]
+script = ExtResource("2_gteyi")
+nodes_and_amounts = Array[ExtResource("3_6rrgx")]([SubResource("Resource_udaev")])
+spawn_delay_range = Vector2(1, 2.5)
+spawn_group_size_range = Vector2i(1, 2)
+
+[sub_resource type="Resource" id="Resource_jvw1n"]
+script = ExtResource("3_6rrgx")
+node = ExtResource("5_rcgyr")
+amount = 3
+metadata/_custom_type_script = "uid://8t34r8tlnd6q"
+
+[sub_resource type="Resource" id="Resource_y7ajy"]
+script = ExtResource("3_6rrgx")
+node = ExtResource("6_gteyi")
+metadata/_custom_type_script = "uid://8t34r8tlnd6q"
+
+[sub_resource type="Resource" id="Resource_w0dcn"]
+script = ExtResource("2_gteyi")
+nodes_and_amounts = Array[ExtResource("3_6rrgx")]([SubResource("Resource_jvw1n"), SubResource("Resource_y7ajy")])
+spawn_delay_range = Vector2(0.2, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jvw1n"]
+radius = 101.45
+
+[node name="WaveSpawnerTest" type="Node2D" unique_id=2020425769]
+
+[node name="Spawner" type="Node2D" parent="." unique_id=1799079258 node_paths=PackedStringArray("spawned_node_parent")]
+script = ExtResource("1_y7ajy")
+waves = Array[ExtResource("2_gteyi")]([SubResource("Resource_r027e"), SubResource("Resource_w0dcn")])
+spawn_pos_clearance_check_shape = SubResource("CircleShape2D_jvw1n")
+spawn_area = Rect2(-2500, -1250, 5000, 2500)
+spawned_node_parent = NodePath("../SpawnedNodesParent")
+
+[node name="SpawnedNodesParent" type="Node2D" parent="." unique_id=1505153097]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=188575312]
+zoom = Vector2(0.2, 0.2)
