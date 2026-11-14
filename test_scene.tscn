@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c4phx4sxo3tqy"]
 
 [ext_resource type="PackedScene" uid="uid://crntnsto002yl" path="res://player/player.tscn" id="1_uhqqe"]
-[ext_resource type="PackedScene" uid="uid://ca3fe5qwrfnmj" path="res://enemy/enemy.tscn" id="2_ia1lp"]
+[ext_resource type="PackedScene" uid="uid://ca3fe5qwrfnmj" path="res://enemy.tscn" id="2_ia1lp"]
 
 [node name="TestScene" type="Node2D" unique_id=570250207]
 
