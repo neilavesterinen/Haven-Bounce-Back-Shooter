@@ -19,6 +19,7 @@ size = Vector2(50, 6000)
 size = Vector2(5500, 5500)
 
 [node name="Map" type="Node2D" unique_id=1935690632]
+metadata/_edit_horizontal_guides_ = [-3100.0, -2893.0]
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=19957002]
 scroll_scale = Vector2(1.2, 1.2)
