@@ -46,18 +46,14 @@ folder_colors={
 "res://autoloads/": "purple"
 }
 
-[gui]
-
-theme/custom="uid://c3ncu5c4bs85t"
-
-[layer_names]
-
-2d_physics/layer_32="building collision"
-
 [global_group]
 
 player=""
 enemy=""
+
+[gui]
+
+theme/custom="uid://c3ncu5c4bs85t"
 
 [input]
 
@@ -66,6 +62,10 @@ click={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_physics/layer_32="building collision"
 
 [physics]
 
