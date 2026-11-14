@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bc12lhcf1rxw0"]
+
+[ext_resource type="Script" uid="uid://bra7cedw8xlx8" path="res://autoloads/upgrade_manager/upgrade_manager.gd" id="1_e8g8g"]
+[ext_resource type="Script" uid="uid://6mpmto5nwiok" path="res://upgrade_shop/upgrade.gd" id="2_elkpn"]
+
+[sub_resource type="Resource" id="Resource_nmq5w"]
+script = ExtResource("2_elkpn")
+name = &"throw_speed"
+starting_price = 10.0
+price_increase_multiplier = 1.2
+metadata/_custom_type_script = "uid://6mpmto5nwiok"
+
+[node name="UpgradeManager" type="Node" unique_id=1160552505]
+script = ExtResource("1_e8g8g")
+upgrades = Array[ExtResource("2_elkpn")]([SubResource("Resource_nmq5w")])

@@ -16,7 +16,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-UpgradeManager="*uid://bra7cedw8xlx8"
+GameState="*uid://b8wivnhyoarqb"
+UpgradeManager="*uid://bc12lhcf1rxw0"
 
 [debug]
 

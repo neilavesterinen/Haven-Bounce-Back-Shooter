@@ -1,3 +1,53 @@
 [gd_scene format=3 uid="uid://cdnyw3kbutq8b"]
 
-[node name="UpgradeShop" type="Node2D" unique_id=335357906]
+[ext_resource type="Script" uid="uid://c65phawhpbjnk" path="res://upgrade_shop/upgrade_purchase_button.gd" id="1_56tmu"]
+
+[node name="UpgradeShop" type="Control" unique_id=1262347264]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=112735385]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=234091174]
+custom_maximum_size = Vector2(-1, 142.401)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ThrowSpeedUpgrade" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=415314928 node_paths=PackedStringArray("price_label")]
+custom_minimum_size = Vector2(172.876, 0)
+layout_mode = 2
+text = "Throw
+Speed"
+script = ExtResource("1_56tmu")
+upgrade = &"throw_speed"
+price_label = NodePath("PriceLabel")
+
+[node name="PriceLabel" type="Label" parent="VBoxContainer/HBoxContainer/ThrowSpeedUpgrade" unique_id=1875539101]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -23.0
+offset_top = -23.0
+offset_right = 23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 0.7137255, 1)
+theme_override_font_sizes/font_size = 20
+text = "123456"
+horizontal_alignment = 1
