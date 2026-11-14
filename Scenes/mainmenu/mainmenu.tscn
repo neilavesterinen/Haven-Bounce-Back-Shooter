@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://c2rgg7vlu8xk0"]
+
+[ext_resource type="Script" path="res://Scenes/mainmenu/mainmenu.gd" id="1_83ksl"]
+[ext_resource type="Theme" path="res://main_theme.theme" id="1_vasse"]
+[ext_resource type="Script" path="res://Scenes/mainmenu/label.gd" id="2_552u2"]
+[ext_resource type="Theme" path="res://Scenes/mainmenu/mainmenu.tres" id="3_dkbu7"]
+[ext_resource type="Script" path="res://Scenes/mainmenu/quit.gd" id="4_ktvea"]
+[ext_resource type="AudioStream" path="res://Music/exitpremise.mp3" id="5_58l34"]
+[ext_resource type="Script" path="res://Scenes/mainmenu/play.gd" id="5_u1uln"]
+[ext_resource type="Script" path="res://Scenes/mainmenu/main_menu_music.gd" id="6_nbwnq"]
+
+[node name="Mainmenu" type="CanvasLayer" unique_id=1407059017]
+script = ExtResource("1_83ksl")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=523416043]
+offset_right = 1153.0
+offset_bottom = 1153.0
+color = Color(0.2520276, 0.25202766, 0.25202763, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=506499756]
+offset_left = -119.00001
+offset_top = -65.0
+offset_right = 1270.7833
+offset_bottom = 176.01315
+rotation = -0.06587538
+scale = Vector2(0.9955796, 1.0424879)
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1179392157]
+offset_left = 56.999996
+offset_top = 43.0
+offset_right = 517.0
+offset_bottom = 155.0
+rotation = -0.050822586
+theme = ExtResource("1_vasse")
+theme_override_colors/font_shadow_color = Color(0.38142636, 1, 0.93270206, 1)
+theme_override_font_sizes/font_size = 80
+text = "Bounce Back"
+script = ExtResource("2_552u2")
+
+[node name="Control" type="Control" parent="." unique_id=165292943]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=695103750]
+layout_mode = 0
+offset_left = -62.0
+offset_top = 194.0
+offset_right = 419.0
+offset_bottom = 570.0
+theme_override_constants/separation = 33
+alignment = 1
+
+[node name="Play" type="Button" parent="Control/VBoxContainer" unique_id=2015603377]
+layout_mode = 2
+theme = ExtResource("3_dkbu7")
+text = "Play"
+script = ExtResource("5_u1uln")
+
+[node name="Settings" type="Button" parent="Control/VBoxContainer" unique_id=1042635005]
+layout_mode = 2
+theme = ExtResource("3_dkbu7")
+text = "Settings"
+
+[node name="Quit" type="Button" parent="Control/VBoxContainer" unique_id=160872346]
+layout_mode = 2
+theme = ExtResource("3_dkbu7")
+text = "Quit"
+script = ExtResource("4_ktvea")
+
+[node name="Label2" type="Label" parent="." unique_id=577593565]
+offset_left = 6.0
+offset_top = 620.0
+offset_right = 178.0
+offset_bottom = 643.0
+text = "Made for Haven Helsinki"
+
+[node name="MainMenuMusic" type="AudioStreamPlayer" parent="." unique_id=1361862489]
+stream = ExtResource("5_58l34")
+parameters/looping = true
+script = ExtResource("6_nbwnq")
+
+[connection signal="pressed" from="Control/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Quit" to="Control/VBoxContainer/Quit" method="_on_pressed"]
+[connection signal="finished" from="MainMenuMusic" to="MainMenuMusic" method="_on_finished"]
