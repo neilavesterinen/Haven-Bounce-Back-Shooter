@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://ivpn1vnkv7qc"]
+
+[ext_resource type="Script" path="res://Scenes/map/map.gd" id="1_jhl4n"]
+[ext_resource type="Shader" uid="uid://btk1hf5455ig" path="res://Scenes/map/checkerboard.gdshader" id="2_xjp1v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q5it0"]
+shader = ExtResource("2_xjp1v")
+shader_parameter/bands = 160
+shader_parameter/black_spacing = 2
+shader_parameter/white_spacing = 2
+shader_parameter/color1 = Color(0.15847239, 0.1584723, 0.15847224, 1)
+shader_parameter/color2 = Color(0.25565878, 0.25565878, 0.25565878, 1)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jfc17"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nxkso"]
+size = Vector2(50, 6000)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_nxkso"]
+vertices = PackedVector2Array(2939.9766, 2926.0078, -2844.0625, 2933.9766, -2879.9297, -2899.0234, 2932.0078, -2914.9688)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-2890, -2909, 2942, -2925, 2950, 2936, -2854, 2944)])
+
+[node name="Map" type="Node2D" unique_id=1935690632]
+script = ExtResource("1_jhl4n")
+metadata/_edit_horizontal_guides_ = [-3100.0, -2893.0]
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=19957002]
+scroll_scale = Vector2(1.2, 1.2)
+repeat_size = Vector2(1152, 648)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1169743780]
+material = SubResource("ShaderMaterial_q5it0")
+position = Vector2(578.75, 323.75)
+scale = Vector2(1154.5, 648.49994)
+texture = SubResource("PlaceholderTexture2D_jfc17")
+
+[node name="Walls" type="Node2D" parent="." unique_id=626045362]
+
+[node name="Wall" type="StaticBody2D" parent="Walls" unique_id=1397479125]
+position = Vector2(-3000, -1500)
+collision_layer = 2147483649
+collision_mask = 2147483649
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall" unique_id=538088305]
+position = Vector2(20, 1511.1001)
+shape = SubResource("RectangleShape2D_nxkso")
+
+[node name="ColorRect" type="ColorRect" parent="Walls/Wall" unique_id=428488270]
+offset_left = -5.0
+offset_top = -1489.0
+offset_right = 45.0
+offset_bottom = 4511.0
+
+[node name="Wall2" type="StaticBody2D" parent="Walls" unique_id=1431649458]
+position = Vector2(3000, -1500)
+collision_layer = 2147483649
+collision_mask = 2147483649
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall2" unique_id=980321677]
+position = Vector2(20, 1511.1001)
+shape = SubResource("RectangleShape2D_nxkso")
+
+[node name="ColorRect" type="ColorRect" parent="Walls/Wall2" unique_id=133895157]
+offset_left = -5.0
+offset_top = -1489.0
+offset_right = 45.0
+offset_bottom = 4511.0
+
+[node name="Wall3" type="StaticBody2D" parent="Walls" unique_id=1353444566]
+position = Vector2(1506, 3016)
+rotation = 1.5707964
+collision_layer = 2147483649
+collision_mask = 2147483649
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall3" unique_id=408661946]
+position = Vector2(20, 1511.1001)
+shape = SubResource("RectangleShape2D_nxkso")
+
+[node name="ColorRect" type="ColorRect" parent="Walls/Wall3" unique_id=393504290]
+offset_left = -5.0
+offset_top = -1489.0
+offset_right = 45.0
+offset_bottom = 4511.0
+
+[node name="Wall4" type="StaticBody2D" parent="Walls" unique_id=504938807]
+position = Vector2(1506, -3034)
+rotation = 1.5707964
+collision_layer = 2147483649
+collision_mask = 2147483649
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall4" unique_id=1457152498]
+position = Vector2(20, 1511.1001)
+shape = SubResource("RectangleShape2D_nxkso")
+
+[node name="ColorRect" type="ColorRect" parent="Walls/Wall4" unique_id=576379738]
+offset_left = -5.0
+offset_top = -1489.0
+offset_right = 45.0
+offset_bottom = 4511.0
+
+[node name="spawnreg" type="NavigationRegion2D" parent="." unique_id=24127064]
+navigation_polygon = SubResource("NavigationPolygon_nxkso")
