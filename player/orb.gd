@@ -48,7 +48,3 @@ func _process(delta: float) -> void:
 		):
 			player.orb_count += 1
 			queue_free()
-
-
-func _on_body_entered(body: Node) -> void:
-	print("hit something")
