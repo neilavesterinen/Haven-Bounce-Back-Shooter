@@ -1,25 +1,16 @@
 extends Node
 
-var points: int = 0
-var points_display_pending: int = 0
-var defaultpt: int = 000000000
-var stage: int = 1
-
-@export var map: PackedScene
-@export var playersc: PackedScene
-@export var enemysc: PackedScene
-
 enum GameStates {
 	SHOP,
 	GAME,
-	DIE
+	DIE,
 }
-var game_state: GameStates = GameStates.GAME
+
+@export var wave_spawner: WaveSpawner
 
 @onready var pointstext: Label3D = $CanvasLayer/PointsT/SubViewport/Label3D
 @onready var stagetext: Label3D = $CanvasLayer/StageT/SubViewport2/Label3D
 
-var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 static func int_to_roman(num: int) -> String:
 	if num <= 0 or num > 3999:
@@ -51,33 +42,17 @@ static func int_to_roman(num: int) -> String:
 	return result
 
 
-func random_no_collide_position() -> Vector2:
-	return Vector2(rng.randi_range(-3000,3000), rng.randi_range(-3000,3000))
-
-func spawn_botwave(count: int) -> void:
-	for i in count:
-		var randloc: Vector2 = random_no_collide_position()
-		var ene: Enemy = enemysc.instantiate()
-		ene.position = randloc
-		add_child(ene)
-
-# game start
 func _ready() -> void:
-	stage = 1
-	stagetext.text = int_to_roman(1)
+	_on_points_changed(0)
+	_on_wave_changed(0)
 
-	# spawn map
-	var mapc := map.instantiate()
-	add_child(mapc)
-
-	if playersc != null:
-		var playerc := playersc.instantiate()
-		add_child(playerc)
-	
-	spawn_botwave(50)
-	
-	
+	GameState.points_changed.connect(_on_points_changed)
+	wave_spawner.wave_changed.connect(_on_wave_changed)
 
 
-func refresh_points(new_points: int) -> void:
+func _on_points_changed(new_points: int) -> void:
 	pointstext.text = str(new_points).pad_zeros(9)
+
+
+func _on_wave_changed(new_wave: int) -> void:
+	stagetext.text = int_to_roman(new_wave + 1)

@@ -17,7 +17,10 @@ signal wave_changed(new_wave_number: int)
 var nodes_left_to_spawn: Array[NodeAndAmount]
 var nodes_left_alive: int
 
+var wave_index: int
+# Wave number rises even if the last wave is duplicated
 var wave_number: int
+
 # For some reasons unknown, having this as 0 and immediately spwaning nodes breaks the freeing tracking
 var spawn_cooldown: float = 1.0
 
@@ -31,6 +34,7 @@ func _ready() -> void:
 	_clearance_check_query = PhysicsShapeQueryParameters2D.new()
 	_clearance_check_query.shape = spawn_pos_clearance_check_shape
 
+	wave_index = -1
 	wave_number = -1
 	new_wave()
 
@@ -42,7 +46,7 @@ func _physics_process(delta: float) -> void:
 	if nodes_left_to_spawn.is_empty():
 		if (
 			nodes_left_alive != 0 or waves.size() == 0
-			or waves[wave_number].nodes_and_amounts.size() == 0
+			or waves[wave_index].nodes_and_amounts.size() == 0
 		):
 			return
 
@@ -52,7 +56,7 @@ func _physics_process(delta: float) -> void:
 	if spawn_cooldown > 0:
 		return
 
-	var wave := waves[wave_number]
+	var wave := waves[wave_index]
 	spawn_from_wave(wave)
 
 	spawn_cooldown = randf_range(wave.spawn_delay_range.x, wave.spawn_delay_range.y)
@@ -91,10 +95,11 @@ func spawn_from_wave(wave: Wave) -> void:
 
 
 func new_wave() -> void:
-	if wave_number + 1 < waves.size():
-		wave_number += 1
+	if wave_index + 1 < waves.size():
+		wave_index += 1
+	wave_number += 1
 
-	nodes_left_to_spawn = waves[wave_number].duplicate_nodes_and_amounts()
+	nodes_left_to_spawn = waves[wave_index].duplicate_nodes_and_amounts()
 	wave_changed.emit(wave_number)
 
 
