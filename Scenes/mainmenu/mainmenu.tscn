@@ -1,13 +1,13 @@
-[gd_scene format=3 uid="uid://c2rgg7vlu8xk0"]
+[gd_scene format=3 uid="uid://b7hi1a0r6apgs"]
 
-[ext_resource type="Script" path="res://Scenes/mainmenu/mainmenu.gd" id="1_83ksl" uid="uid://cq0pwispmmltm"]
-[ext_resource type="Theme" path="res://main_theme.theme" id="1_vasse" uid="uid://c3ncu5c4bs85t"]
-[ext_resource type="Script" path="res://Scenes/mainmenu/label.gd" id="2_552u2" uid="uid://bg75ucid01t6d"]
-[ext_resource type="Theme" path="res://Scenes/mainmenu/mainmenu.tres" id="3_dkbu7" uid="uid://ceeh4w5x06ip"]
-[ext_resource type="Script" path="res://Scenes/mainmenu/quit.gd" id="4_ktvea" uid="uid://bq61u1k3g782"]
-[ext_resource type="AudioStream" path="res://Music/exitpremise.mp3" id="5_58l34" uid="uid://dpaswaqhcyadu"]
-[ext_resource type="Script" path="res://Scenes/mainmenu/play.gd" id="5_u1uln" uid="uid://kayqd04m46m1"]
-[ext_resource type="Script" path="res://Scenes/mainmenu/main_menu_music.gd" id="6_nbwnq" uid="uid://csqukogvrjo7a"]
+[ext_resource type="Script" uid="uid://cq0pwispmmltm" path="res://Scenes/mainmenu/mainmenu.gd" id="1_83ksl"]
+[ext_resource type="Theme" uid="uid://c3ncu5c4bs85t" path="res://main_theme.theme" id="1_vasse"]
+[ext_resource type="Script" uid="uid://bg75ucid01t6d" path="res://Scenes/mainmenu/label.gd" id="2_552u2"]
+[ext_resource type="Theme" uid="uid://ceeh4w5x06ip" path="res://Scenes/mainmenu/mainmenu.tres" id="3_dkbu7"]
+[ext_resource type="Script" uid="uid://bq61u1k3g782" path="res://Scenes/mainmenu/quit.gd" id="4_ktvea"]
+[ext_resource type="AudioStream" uid="uid://dpaswaqhcyadu" path="res://Music/exitpremise.mp3" id="5_58l34"]
+[ext_resource type="Script" uid="uid://kayqd04m46m1" path="res://Scenes/mainmenu/play.gd" id="5_u1uln"]
+[ext_resource type="Script" uid="uid://csqukogvrjo7a" path="res://Scenes/mainmenu/main_menu_music.gd" id="6_nbwnq"]
 
 [node name="Mainmenu" type="CanvasLayer" unique_id=1407059017]
 script = ExtResource("1_83ksl")
@@ -35,7 +35,7 @@ rotation = -0.050822586
 theme = ExtResource("1_vasse")
 theme_override_colors/font_shadow_color = Color(0.38142636, 1, 0.93270206, 1)
 theme_override_font_sizes/font_size = 80
-text = "Bounce Back"
+text = "Orbr"
 script = ExtResource("2_552u2")
 
 [node name="Control" type="Control" parent="." unique_id=165292943]
