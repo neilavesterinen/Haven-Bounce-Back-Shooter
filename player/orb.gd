@@ -61,12 +61,19 @@ func _physics_process(delta: float) -> void:
 
 	if bouncing_back and player:
 		bounce_elapsed += delta
-		# Rotate the heading toward the player at a limited rate to get a missile arc.
-		var home := global_position.direction_to(player.global_position)
-		var turn := clampf(heading.angle_to(home), -TURN_RATE * delta, TURN_RATE * delta)
-		heading = heading.rotated(turn)
-
 		speed = minf(BASE_SPEED * pow(SPEED_GROWTH, bounce_elapsed), MAX_SPEED)
+
+		# Keep the turn radius below the distance to the player. A fixed turn rate
+		# gives a 300 px radius at MAX_SPEED, which is larger than CATCH_RADIUS,
+		# so the orb could orbit the player forever. Half the distance guarantees
+		# the orb out-turns the bearing to the player and spirals inward.
+		var to_player := player.global_position - global_position
+		var distance := maxf(to_player.length(), 1.0)
+		var turn_radius := maxf(distance * 0.5, 16.0)
+		var max_turn := maxf(speed / turn_radius, TURN_RATE) * delta
+		var home := to_player / distance
+		var turn := clampf(heading.angle_to(home), -max_turn, max_turn)
+		heading = heading.rotated(turn)
 	else:
 		heading = global_position.direction_to(target_position)
 		speed = BASE_SPEED
