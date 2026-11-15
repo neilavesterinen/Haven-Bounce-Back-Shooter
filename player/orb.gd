@@ -1,93 +1,107 @@
 extends RigidBody2D
 class_name Orb
 
+const BASE_SPEED := 700.0
+const MAX_SPEED := 1800.0
+const SPEED_GROWTH := 1.6  # speed multiplier gained per second while homing
+const HOMING_RATE := 3.0  # how quickly steering blends from the bounce to the player
+const CATCH_RADIUS := 50.0
+
 var player: Player
 
 var enemies: Array
 
-var target_node: Node2D
+var target_position: Vector2
 
-var SPEED := 10.0
+var bounces := 2
 
 var bouncing_back := false
 
-var speed_increase_time := 0.0
+var bounce_elapsed := 0.0
 
-@export var MAX_BOUNCES := 2
+var steer := 0.0  # 0 = follow bounce_dir, 1 = head straight for the player
 
-var bounces := MAX_BOUNCES
+var bounce_dir: Vector2
 
-@export var RANGE := 100
+var bounce_target: Vector2
+
+@onready var trail: Line2D = $Line2D
 
 
-func _process(delta: float) -> void:
+func _ready() -> void:
+	rotate(randi_range(0, 350))
+	enemies = get_tree().get_nodes_in_group("enemy")
+
+
+func blend_directions(dir_a: Vector2, dir_b: Vector2, weight: float) -> Vector2:
+	var a := dir_a.normalized()
+	var b := dir_b.normalized()
+	if a == Vector2.ZERO:
+		return b
+	if b == Vector2.ZERO:
+		return a
+	return a.slerp(b, clampf(weight, 0.0, 1.0))
+
+
+func _physics_process(delta: float) -> void:
+	trail.add_point(global_position)
+	if trail.points.size() > 50:
+		trail.points.slice(50)
+	rotate(5 * delta)
+
+	var move_dir: Vector2
+	var speed: float
+
+	if bouncing_back and player:
+		bounce_elapsed += delta
+		# Exponential ease-in: starts on the bounce direction, asymptotically homes on the player.
+		steer = 1.0 - exp(-HOMING_RATE * bounce_elapsed)
+
+		var away := global_position.direction_to(bounce_target)
+		var home := global_position.direction_to(player.global_position)
+		move_dir = blend_directions(away, home, steer)
+
+		speed = minf(BASE_SPEED * pow(SPEED_GROWTH, bounce_elapsed), MAX_SPEED)
+	else:
+		move_dir = global_position.direction_to(target_position)
+		speed = BASE_SPEED
+
+	if move_dir != Vector2.ZERO:
+		linear_velocity = move_dir * speed
+
+	if not bouncing_back and global_position.distance_squared_to(target_position) <= CATCH_RADIUS * CATCH_RADIUS:
+		bounce_dir = global_position.direction_to(player.global_position)
+		bounce_target = global_position + bounce_dir * 500.0
+		bounce_back()
+
+	if bouncing_back and player and global_position.distance_squared_to(player.global_position) <= CATCH_RADIUS * CATCH_RADIUS:
+		player.orb_count += 1
+		queue_free()
+
+
+func bounce_back() -> void:
+	if not player: return
+	if bouncing_back: return
+	bouncing_back = true
+	bounce_elapsed = 0.0
+	if bounce_dir == Vector2.ZERO:
+		bounce_dir = global_position.direction_to(player.global_position)
+		bounce_target = global_position + bounce_dir * 500.0
+	linear_velocity = bounce_dir * BASE_SPEED
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if not body is Enemy:
+		return
+	var enemy := body as Enemy
+	enemy.health -= 1
 	if bouncing_back:
-		speed_increase_time += delta
-	
-	var target: Node2D
-	if target_node:
-		target = target_node
-	if (bouncing_back and player) or !target_node:
-		target = player
-	
-	if target:
-		var direction: Vector2 = Vector2.from_angle(lerp_angle(global_position.direction_to(target.global_position).angle(), linear_velocity.angle() + PI, 0.3))
-		var distance := global_position.distance_to(target.global_position)
-		var force := Vector2(0.0, 0.0)
-		if direction:
-			force = direction * SPEED * distance * (1 + speed_increase_time * 100)
-		
-		if distance > 1000:
-			player.orb_count += 1
-			queue_free()
+		return
 
-		apply_force(force)
-
-		if (
-			global_position.x < target.global_position.x + 50
-			and global_position.x > target.global_position.x - 50
-			and global_position.y < target.global_position.y + 50 and global_position.y
-			> target.global_position.y - 50
-		):
-			#if bounces == 0:
-			bouncing_back = true
-			set_axis_velocity(Vector2())
-			if player:
-				apply_impulse(global_position.direction_to(player.global_position) * 400)
-			#else:
-			#	target_position = enemies[0].position
-			#	bounces -= 1
-
-		if bouncing_back and player:
-			if (
-				global_position.x < player.position.x + 50
-				and global_position.x > player.position.x - 50
-				and global_position.y < player.position.y + 50
-				and global_position.y > player.position.y - 50
-			):
-				player.orb_count += 1
-				queue_free()
-
-
-func _on_body_entered(body: Enemy) -> void:
-	if body.is_in_group("enemy"):
-		if body.take_damage:
-			body.take_damage(1)
-			enemies = get_tree().get_nodes_in_group("enemy")
-		if bounces == 0:
-			bouncing_back = true
-			linear_velocity /= 10
-			if player:
-				apply_impulse(global_position.direction_to(player.global_position) * 200)
-		else:
-			var closest_distance:float = RANGE
-			var closest_enemy:Node2D
-			for enemy:Node2D in enemies:
-				if enemy != body:
-					closest_distance = global_position.distance_to(enemy.global_position)
-					closest_enemy = enemy
-			if closest_enemy:
-				linear_velocity /= 2
-				target_node = closest_enemy
-				apply_impulse(global_position.direction_to(target_node.global_position) * 300)
-			bounces -= 1
+	var normal := (global_position - body.global_position).normalized()
+	var incoming := linear_velocity.normalized()
+	if incoming == Vector2.ZERO:
+		incoming = global_position.direction_to(target_position)
+	bounce_dir = incoming.bounce(normal)
+	bounce_target = global_position + bounce_dir * 500.0
+	bounce_back()

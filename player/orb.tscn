@@ -6,20 +6,41 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_xdlj8"]
 radius = 21.0
 
+[sub_resource type="Curve" id="Curve_t05rj"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_nxkso"]
+colors = PackedColorArray(0, 0, 1, 0, 0.681432, 0.37342674, 1, 1)
+
 [node name="Orb" type="RigidBody2D" unique_id=1693876866]
 collision_layer = 2
-collision_mask = 0
+collision_mask = 2
 gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_xdlj8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1611816104]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1867965121]
+position = Vector2(-2, 19.000002)
+scale = Vector2(0.0452495, 0.045249507)
+texture = ExtResource("2_t05rj")
+region_rect = Rect2(8.765, 7, 106.235, 113.5)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2109171454]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1611816104]
 shape = SubResource("CircleShape2D_xdlj8")
 
-[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1416821035]
-position = Vector2(-0.9999924, 18)
-scale = Vector2(0.038709678, 0.043675277)
-texture = ExtResource("2_t05rj")
+[node name="Line2D" type="Line2D" parent="." unique_id=1350068218]
+top_level = true
+scale = Vector2(0.8826639, 0.91583675)
+width = 30.0
+width_curve = SubResource("Curve_t05rj")
+default_color = Color(0.5802685, 1, 1, 1)
+gradient = SubResource("Gradient_nxkso")
+joint_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
