@@ -8,8 +8,14 @@ script = ExtResource("2_elkpn")
 name = &"throw_speed"
 starting_price = 10.0
 price_increase_multiplier = 1.2
-metadata/_custom_type_script = "uid://6mpmto5nwiok"
+
+[sub_resource type="Resource" id="Resource_5l446"]
+script = ExtResource("2_elkpn")
+name = &"max_health"
+starting_price = 15.0
+price_increase_multiplier = 1.3
+metadata/_custom_type_script = "uid://io38gkndc12b"
 
 [node name="UpgradeManager" type="Node" unique_id=1160552505]
 script = ExtResource("1_e8g8g")
-upgrades = Array[ExtResource("2_elkpn")]([SubResource("Resource_nmq5w")])
+upgrades = Array[ExtResource("2_elkpn")]([SubResource("Resource_nmq5w"), SubResource("Resource_5l446")])

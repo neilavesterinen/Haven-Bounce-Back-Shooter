@@ -12,7 +12,7 @@ extends Resource
 func get_value_float() -> float:
 	var level := UpgradeManager.get_upgrade_state(connected_upgrade).level
 
-	return base_value * (per_level_multiplier_addition * level) + per_level_addition * level
+	return base_value * (1 + per_level_multiplier_addition * level) + per_level_addition * level
 
 
 func get_value_int() -> int:

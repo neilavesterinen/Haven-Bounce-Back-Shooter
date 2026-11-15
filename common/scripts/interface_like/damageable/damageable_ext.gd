@@ -25,6 +25,6 @@ func damage(
 		effective_damage = ceil(effective_damage * _type_multiplier_by_type[damage_type])
 
 	if not team_immunities.has(damage_team) and not effective_damage == 0:
-		damaged.emit(amount, damage_type)
+		damaged.emit(amount, damage_team, damage_type)
 	else:
-		damage_failed.emit(amount, damage_type)
+		damage_failed.emit(amount, damage_team, damage_type)

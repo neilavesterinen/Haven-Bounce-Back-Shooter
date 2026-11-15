@@ -1,5 +1,8 @@
 extends Node
 
+signal health_changed(new_health: int)
+signal died
+
 @export var max_health: Attribute
 
 @export var damageable: Damageable
@@ -9,10 +12,18 @@ var _health: int
 var _dead: bool
 
 
+func _ready() -> void:
+	damageable.damaged.connect(_on_damaged)
+
+	_health = max_health.get_value_int()
+
+
 func die() -> void:
 	if _dead:
 		return
 	_dead = true
+
+	died.emit()
 
 	LevelManagerHelper.load_current_level_transition()
 	if player_parent:
@@ -25,6 +36,7 @@ func _on_damaged(
 	_damage_type: Damageable.DamageType,
 ) -> void:
 	_health -= damage
+	health_changed.emit(_health)
 
 	if _health <= 0:
 		die()

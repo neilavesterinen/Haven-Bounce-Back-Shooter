@@ -2,9 +2,13 @@
 
 [ext_resource type="Script" uid="uid://c3g25drac3map" path="res://enemy/enemy.gd" id="1_7k104"]
 [ext_resource type="Texture2D" uid="uid://rr83vynoqgaw" path="res://icon.svg" id="2_4gyqm"]
+[ext_resource type="Script" uid="uid://cmavd3hga2fko" path="res://common/scripts/damage_on_contact.gd" id="3_ppra6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrcp0"]
 size = Vector2(78, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ofsxj"]
+size = Vector2(88.864, 140.695)
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1634294982 groups=["enemy"]]
 collision_mask = 3
@@ -17,5 +21,13 @@ texture = ExtResource("2_4gyqm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1321509770]
 shape = SubResource("RectangleShape2D_xrcp0")
+
+[node name="Damage" type="Area2D" parent="." unique_id=1797718684]
+script = ExtResource("3_ppra6")
+damage_team = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage" unique_id=1453246104]
+shape = SubResource("RectangleShape2D_ofsxj")
+debug_color = Color(0.7965934, 0.37181562, 0.5403993, 0.41960785)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=162018649]
