@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 	var target: Node2D
 	if target_node:
 		target = target_node
-	if bouncing_back and player:
+	if (bouncing_back and player) or !target_node:
 		target = player
 	
 	if target:
