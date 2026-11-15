@@ -1,6 +1,46 @@
 [gd_scene format=3 uid="uid://cdnyw3kbutq8b"]
 
 [ext_resource type="Script" uid="uid://dwrkken2kj51t" path="res://upgrade_shop/upgrade_purchase_button.gd" id="1_56tmu"]
+[ext_resource type="Theme" uid="uid://c3ncu5c4bs85t" path="res://main_theme.theme" id="1_ru6vo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_svnul"]
+bg_color = Color(0.70980394, 0.60784316, 0.76862746, 0.972549)
+skew = Vector2(0.099, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.5187, 0.4116, 0.84, 1)
+corner_radius_top_right = 38
+corner_detail = 20
+shadow_color = Color(0.39215687, 0.078431375, 0.74509805, 0.07058824)
+shadow_size = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ru6vo"]
+bg_color = Color(0.7712744, 0.5681324, 0.80476063, 0.972549)
+skew = Vector2(0.099, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.57963467, 0.37277666, 0.84466374, 1)
+corner_radius_top_right = 38
+corner_detail = 20
+shadow_color = Color(0.39215687, 0.078431375, 0.74509805, 0.07058824)
+shadow_size = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ejy1s"]
+bg_color = Color(0.71071, 0.60830003, 0.77, 0.8156863)
+skew = Vector2(0.099, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.5187, 0.4116, 0.84, 1)
+corner_radius_top_right = 38
+corner_detail = 20
+shadow_color = Color(0.39215687, 0.078431375, 0.74509805, 0.07058824)
+shadow_size = 15
 
 [node name="UpgradeShop" type="Control" unique_id=1262347264]
 layout_mode = 3
@@ -25,10 +65,19 @@ metadata/_edit_use_anchors_ = true
 custom_maximum_size = Vector2(-1, 142.401)
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("1_ru6vo")
+theme_override_constants/separation = 130
+alignment = 1
 
 [node name="ThrowSpeedUpgrade" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=415314928 node_paths=PackedStringArray("price_label")]
 custom_minimum_size = Vector2(172.876, 0)
 layout_mode = 2
+offset_transform_position = Vector2(7.896, 0)
+theme = ExtResource("1_ru6vo")
+theme_override_font_sizes/font_size = 27
+theme_override_styles/normal = SubResource("StyleBoxFlat_svnul")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ru6vo")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ejy1s")
 text = "Throw
 Speed"
 script = ExtResource("1_56tmu")
@@ -37,17 +86,18 @@ price_label = NodePath("PriceLabel")
 
 [node name="PriceLabel" type="Label" parent="VBoxContainer/HBoxContainer/ThrowSpeedUpgrade" unique_id=1875539101]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -23.0
-offset_top = -23.0
-offset_right = 23.0
-grow_horizontal = 2
+offset_left = -48.0
+offset_top = -39.0
+offset_right = -18.0
+offset_bottom = -11.0
+grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 0.7137255, 1)
 theme_override_font_sizes/font_size = 20
-text = "123456"
-horizontal_alignment = 1
+text = "123"
+vertical_alignment = 1
