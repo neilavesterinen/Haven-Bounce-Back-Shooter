@@ -10,6 +10,9 @@
 [ext_resource type="Script" uid="uid://d28bg3buhu30p" path="res://Scenes/map/wave_spawner/wave_spawner.gd" id="6_nds08"]
 [ext_resource type="Script" uid="uid://b4fkgubw0acrh" path="res://Scenes/map/wave_spawner/wave.gd" id="7_5l446"]
 [ext_resource type="Script" uid="uid://cd86jqx45pujh" path="res://Scenes/map/wave_spawner/node_and_amount.gd" id="8_6y3i1"]
+[ext_resource type="Script" uid="uid://c3g25drac3map" path="res://enemy/enemy.gd" id="11_ii7ab"]
+[ext_resource type="Texture2D" uid="uid://rr83vynoqgaw" path="res://icon.svg" id="12_hxkax"]
+[ext_resource type="Script" uid="uid://cmavd3hga2fko" path="res://common/scripts/damage_on_contact.gd" id="13_7rk1p"]
 
 [sub_resource type="SystemFont" id="SystemFont_g0siu"]
 font_names = PackedStringArray("Sans-Serif")
@@ -25,6 +28,115 @@ script = ExtResource("7_5l446")
 nodes_and_amounts = Array[ExtResource("8_6y3i1")]([SubResource("Resource_d0b77")])
 spawn_delay_range = Vector2(1, 2.5)
 spawn_group_size_range = Vector2i(1, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrcp0"]
+size = Vector2(78, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ofsxj"]
+size = Vector2(88.864, 140.695)
+
+[sub_resource type="PackedScene" id="PackedScene_jbxxx"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array()],
+"names": PackedStringArray("Enemy", "CharacterBody2D", "enemy", "collision_mask", "script", "Icon", "Sprite2D", "modulate", "scale", "texture", "CollisionShape2D", "CollisionShape2D", "shape", "Damage", "Area2D", "script", "damage_team", "CollisionShape2D", "CollisionShape2D", "shape", "debug_color", "NavigationAgent2D", "NavigationAgent2D"),
+"node_count": 6,
+"node_ids": PackedInt32Array(1634294982, 266075212, 1321509770, 1797718684, 1453246104, 162018649),
+"node_paths": [NodePath("."), NodePath("."), NodePath("."), NodePath("./Damage"), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 2, 3, 0, 4, 1, 1, 2, 1073741824, 0, 6, 5, -1, 3, 7, 2, 8, 3, 9, 4, 0, 1073741825, 0, 11, 10, -1, 1, 12, 5, 0, 1073741826, 0, 14, 13, -1, 2, 15, 6, 16, 7, 0, 1073741827, 0, 18, 17, -1, 2, 19, 8, 20, 9, 0, 1073741828, 0, 22, 21, -1, 0, 0),
+"variants": [3, ExtResource("11_ii7ab"), Color(1, 0, 0, 1), Vector2(0.609375, 1), ExtResource("12_hxkax"), SubResource("RectangleShape2D_xrcp0"), ExtResource("13_7rk1p"), 1, SubResource("RectangleShape2D_ofsxj"), Color(0.7965934, 0.37181562, 0.5403993, 0.41960785)],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_2wwbv"]
+script = ExtResource("8_6y3i1")
+node = SubResource("PackedScene_jbxxx")
+amount = 8
+
+[sub_resource type="Resource" id="Resource_klkrs"]
+script = ExtResource("7_5l446")
+nodes_and_amounts = Array[ExtResource("8_6y3i1")]([SubResource("Resource_2wwbv")])
+spawn_delay_range = Vector2(0.5, 1.5)
+spawn_group_size_range = Vector2i(2, 2)
+
+[sub_resource type="PackedScene" id="PackedScene_ii7ab"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array()],
+"names": PackedStringArray("Enemy", "CharacterBody2D", "enemy", "collision_mask", "script", "Icon", "Sprite2D", "modulate", "scale", "texture", "CollisionShape2D", "CollisionShape2D", "shape", "Damage", "Area2D", "script", "damage_team", "CollisionShape2D", "CollisionShape2D", "shape", "debug_color", "NavigationAgent2D", "NavigationAgent2D"),
+"node_count": 6,
+"node_ids": PackedInt32Array(1634294982, 266075212, 1321509770, 1797718684, 1453246104, 162018649),
+"node_paths": [NodePath("."), NodePath("."), NodePath("."), NodePath("./Damage"), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 2, 3, 0, 4, 1, 1, 2, 1073741824, 0, 6, 5, -1, 3, 7, 2, 8, 3, 9, 4, 0, 1073741825, 0, 11, 10, -1, 1, 12, 5, 0, 1073741826, 0, 14, 13, -1, 2, 15, 6, 16, 7, 0, 1073741827, 0, 18, 17, -1, 2, 19, 8, 20, 9, 0, 1073741828, 0, 22, 21, -1, 0, 0),
+"variants": [3, ExtResource("11_ii7ab"), Color(1, 0, 0, 1), Vector2(0.609375, 1), ExtResource("12_hxkax"), SubResource("RectangleShape2D_xrcp0"), ExtResource("13_7rk1p"), 1, SubResource("RectangleShape2D_ofsxj"), Color(0.7965934, 0.37181562, 0.5403993, 0.41960785)],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_hxkax"]
+script = ExtResource("8_6y3i1")
+node = SubResource("PackedScene_ii7ab")
+amount = 12
+
+[sub_resource type="Resource" id="Resource_7rk1p"]
+script = ExtResource("7_5l446")
+nodes_and_amounts = Array[ExtResource("8_6y3i1")]([SubResource("Resource_hxkax")])
+spawn_delay_range = Vector2(0.3, 0.5)
+
+[sub_resource type="PackedScene" id="PackedScene_hxkax"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array()],
+"names": PackedStringArray("Enemy", "CharacterBody2D", "enemy", "collision_mask", "script", "Icon", "Sprite2D", "modulate", "scale", "texture", "CollisionShape2D", "CollisionShape2D", "shape", "Damage", "Area2D", "script", "damage_team", "CollisionShape2D", "CollisionShape2D", "shape", "debug_color", "NavigationAgent2D", "NavigationAgent2D"),
+"node_count": 6,
+"node_ids": PackedInt32Array(1634294982, 266075212, 1321509770, 1797718684, 1453246104, 162018649),
+"node_paths": [NodePath("."), NodePath("."), NodePath("."), NodePath("./Damage"), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 2, 3, 0, 4, 1, 1, 2, 1073741824, 0, 6, 5, -1, 3, 7, 2, 8, 3, 9, 4, 0, 1073741825, 0, 11, 10, -1, 1, 12, 5, 0, 1073741826, 0, 14, 13, -1, 2, 15, 6, 16, 7, 0, 1073741827, 0, 18, 17, -1, 2, 19, 8, 20, 9, 0, 1073741828, 0, 22, 21, -1, 0, 0),
+"variants": [3, ExtResource("11_ii7ab"), Color(1, 0, 0, 1), Vector2(0.609375, 1), ExtResource("12_hxkax"), SubResource("RectangleShape2D_xrcp0"), ExtResource("13_7rk1p"), 1, SubResource("RectangleShape2D_ofsxj"), Color(0.7965934, 0.37181562, 0.5403993, 0.41960785)],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_jbxxx"]
+script = ExtResource("8_6y3i1")
+node = SubResource("PackedScene_hxkax")
+amount = 15
+
+[sub_resource type="Resource" id="Resource_2kyel"]
+script = ExtResource("7_5l446")
+nodes_and_amounts = Array[ExtResource("8_6y3i1")]([SubResource("Resource_jbxxx")])
+spawn_delay_range = Vector2(3, 5)
+spawn_group_size_range = Vector2i(4, 4)
+
+[sub_resource type="PackedScene" id="PackedScene_7rk1p"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array()],
+"names": PackedStringArray("Enemy", "CharacterBody2D", "enemy", "collision_mask", "script", "Icon", "Sprite2D", "modulate", "scale", "texture", "CollisionShape2D", "CollisionShape2D", "shape", "Damage", "Area2D", "script", "damage_team", "CollisionShape2D", "CollisionShape2D", "shape", "debug_color", "NavigationAgent2D", "NavigationAgent2D"),
+"node_count": 6,
+"node_ids": PackedInt32Array(1634294982, 266075212, 1321509770, 1797718684, 1453246104, 162018649),
+"node_paths": [NodePath("."), NodePath("."), NodePath("."), NodePath("./Damage"), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 2, 3, 0, 4, 1, 1, 2, 1073741824, 0, 6, 5, -1, 3, 7, 2, 8, 3, 9, 4, 0, 1073741825, 0, 11, 10, -1, 1, 12, 5, 0, 1073741826, 0, 14, 13, -1, 2, 15, 6, 16, 7, 0, 1073741827, 0, 18, 17, -1, 2, 19, 8, 20, 9, 0, 1073741828, 0, 22, 21, -1, 0, 0),
+"variants": [3, ExtResource("11_ii7ab"), Color(1, 0, 0, 1), Vector2(0.609375, 1), ExtResource("12_hxkax"), SubResource("RectangleShape2D_xrcp0"), ExtResource("13_7rk1p"), 1, SubResource("RectangleShape2D_ofsxj"), Color(0.7965934, 0.37181562, 0.5403993, 0.41960785)],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_hy3pq"]
+script = ExtResource("8_6y3i1")
+node = SubResource("PackedScene_7rk1p")
+amount = 15
+
+[sub_resource type="Resource" id="Resource_ai5tx"]
+script = ExtResource("7_5l446")
+nodes_and_amounts = Array[ExtResource("8_6y3i1")]([SubResource("Resource_hy3pq")])
+spawn_delay_range = Vector2(2.5, 3.5)
+spawn_group_size_range = Vector2i(2, 4)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5l446"]
 radius = 150.0
@@ -83,7 +195,7 @@ remote_path = NodePath("../../Camera2D")
 
 [node name="WaveSpawner" type="Node2D" parent="." unique_id=1937314124 node_paths=PackedStringArray("spawned_node_parent")]
 script = ExtResource("6_nds08")
-waves = Array[ExtResource("7_5l446")]([SubResource("Resource_7pssd")])
+waves = Array[ExtResource("7_5l446")]([SubResource("Resource_7pssd"), SubResource("Resource_klkrs"), SubResource("Resource_7rk1p"), SubResource("Resource_2kyel"), SubResource("Resource_ai5tx")])
 spawn_pos_clearance_check_shape = SubResource("CircleShape2D_5l446")
 spawn_area = Rect2(-2500, -2500, 5000, 5000)
 spawned_node_parent = NodePath(".")

@@ -44,5 +44,5 @@ func _physics_process(_delta: float) -> void:
 			0,
 		).rotated(weapon_node.global_rotation)
 
-		get_tree().root.add_child(orb_node)
+		LevelManager.get_level_root_node().add_child(orb_node)
 		orb_node.global_position = orb_spawn.global_position
