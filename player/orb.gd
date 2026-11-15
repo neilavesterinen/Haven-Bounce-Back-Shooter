@@ -8,6 +8,8 @@ const TURN_RATE := 6.0 # minimum radians per second the orb turns toward the pla
 const CATCH_RADIUS := 50.0
 
 @export var explode: PackedScene
+@export var max_bounces: Attribute
+@export var damage: Attribute
 
 var player: Player
 
@@ -16,7 +18,6 @@ var enemies: Array
 var target_position: Vector2
 
 var bounce_count := 0 # enemy deflections used so far
-var max_bounces := 3
 
 var bouncing_back := false
 
@@ -72,19 +73,18 @@ func _physics_process(delta: float) -> void:
 
 	if (
 		not bouncing_back
-		and global_position.distance_squared_to(target_position) <= CATCH_RADIUS * CATCH_RADIUS
+		and global_position.distance_squared_to(target_position) <= CATCH_RADIUS ** 2
 	):
 		bounce_dir = global_position.direction_to(player.global_position)
 		bounce_back()
 
 	if (
 		bouncing_back and player
-		and global_position.distance_squared_to(player.global_position)
-		<= CATCH_RADIUS * CATCH_RADIUS
+		and global_position.distance_squared_to(player.global_position) <= CATCH_RADIUS ** 2
 	):
 		exploder()
 
-	if bounce_count >= max_bounces:
+	if bounce_count >= max_bounces.get_value_int():
 		modulate = Color("3c3c3c79")
 		trail.gradient.set_color(1, Color("ae5fff5e"))
 		if area:
@@ -118,12 +118,12 @@ func bounce_back() -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if not body is Enemy:
-		return
 	var enemy := body as Enemy
-	enemy.take_damage(1)
+	if not enemy:
+		return
+	enemy.take_damage(damage.get_value_int())
 
-	if max_bounces > 0 and bounce_count >= max_bounces:
+	if max_bounces.get_value_int() > 0 and bounce_count >= max_bounces.get_value_int():
 		return
 
 	var normal := (global_position - body.global_position).normalized()

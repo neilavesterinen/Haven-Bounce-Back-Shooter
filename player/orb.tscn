@@ -1,8 +1,22 @@
 [gd_scene format=3 uid="uid://umirppnct2kf"]
 
-[ext_resource type="Script" uid="uid://d1jarkgnb5njx" path="res://player/orb.gd" id="1_xdlj8"]
+[ext_resource type="Script" uid="uid://cvy4uon101242" path="res://player/orb.gd" id="1_xdlj8"]
 [ext_resource type="PackedScene" uid="uid://c2qh7hod53jnk" path="res://player/explode.tscn" id="2_80hed"]
 [ext_resource type="Texture2D" uid="uid://bts5cmqp8s4mi" path="res://player/orb.png" id="2_t05rj"]
+[ext_resource type="Script" uid="uid://ddqn6q6ugwa1" path="res://Scenes/upgrade_shop/attribute.gd" id="3_80hed"]
+
+[sub_resource type="Resource" id="Resource_atcwq"]
+script = ExtResource("3_80hed")
+connected_upgrade = &"orb_max_bounce_count"
+base_value = 3.0
+per_level_addition = 1.0
+metadata/_custom_type_script = "uid://ddqn6q6ugwa1"
+
+[sub_resource type="Resource" id="Resource_y7nc4"]
+script = ExtResource("3_80hed")
+connected_upgrade = &"damage"
+per_level_addition = 1.0
+metadata/_custom_type_script = "uid://ddqn6q6ugwa1"
 
 [sub_resource type="Curve" id="Curve_t05rj"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -22,6 +36,8 @@ contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_xdlj8")
 explode = ExtResource("2_80hed")
+max_bounces = SubResource("Resource_atcwq")
+damage = SubResource("Resource_y7nc4")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1867965121]
 z_index = 2

@@ -17,7 +17,7 @@ func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not player:
 		return
 
@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 
 
 func take_damage(damage: int) -> void:
-	health -= 1
+	health -= damage
 	modulate.a = 1.0 / MAX_HEALTH * health
 	if health <= 0:
 		GameState.points += 1

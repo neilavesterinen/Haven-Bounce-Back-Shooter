@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cdnyw3kbutq8b"]
 
-[ext_resource type="Script" uid="uid://c5us4vlp7nbst" path="res://upgrade_shop/upgrade_purchase_button.gd" id="1_56tmu"]
+[ext_resource type="Script" uid="uid://c5us4vlp7nbst" path="res://Scenes/upgrade_shop/upgrade_purchase_button.gd" id="1_56tmu"]
 [ext_resource type="Theme" uid="uid://c3ncu5c4bs85t" path="res://main_theme.theme" id="1_ru6vo"]
 [ext_resource type="Script" uid="uid://beecw5qat2odv" path="res://common/scripts/glue_functions/glue_funcs_level_load.gd" id="3_svnul"]
 [ext_resource type="PackedScene" uid="uid://paan3sdyedo0" path="res://Scenes/game/point_counter.tscn" id="4_ejy1s"]
@@ -113,7 +113,71 @@ theme = ExtResource("1_ru6vo")
 theme_override_constants/separation = 130
 alignment = 1
 
-[node name="ThrowSpeedUpgrade" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=415314928 node_paths=PackedStringArray("price_label")]
+[node name="DamageUpgrade" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=415314928 node_paths=PackedStringArray("price_label")]
+custom_minimum_size = Vector2(172.876, 0)
+layout_mode = 2
+offset_transform_position = Vector2(7.896, 0)
+theme = ExtResource("1_ru6vo")
+theme_override_font_sizes/font_size = 27
+theme_override_styles/normal = SubResource("StyleBoxFlat_svnul")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ru6vo")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ejy1s")
+text = "Damage"
+script = ExtResource("1_56tmu")
+upgrade = &"damage"
+price_label = NodePath("PriceLabel")
+
+[node name="PriceLabel" type="Label" parent="VBoxContainer/HBoxContainer/DamageUpgrade" unique_id=1875539101]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -39.0
+offset_right = -18.0
+offset_bottom = -11.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 0.7137255, 1)
+theme_override_font_sizes/font_size = 20
+text = "123"
+vertical_alignment = 1
+
+[node name="MaxHealthUpgrade" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1696052775 node_paths=PackedStringArray("price_label")]
+custom_minimum_size = Vector2(172.876, 0)
+layout_mode = 2
+offset_transform_position = Vector2(7.896, 0)
+theme = ExtResource("1_ru6vo")
+theme_override_font_sizes/font_size = 27
+theme_override_styles/normal = SubResource("StyleBoxFlat_svnul")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ru6vo")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ejy1s")
+text = "Health"
+script = ExtResource("1_56tmu")
+upgrade = &"max_health"
+price_label = NodePath("PriceLabel")
+
+[node name="PriceLabel" type="Label" parent="VBoxContainer/HBoxContainer/MaxHealthUpgrade" unique_id=1560738194]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -39.0
+offset_right = -18.0
+offset_bottom = -11.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 0.7137255, 1)
+theme_override_font_sizes/font_size = 20
+text = "123"
+vertical_alignment = 1
+
+[node name="ThrowDistance" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=245931662 node_paths=PackedStringArray("price_label")]
 custom_minimum_size = Vector2(172.876, 0)
 layout_mode = 2
 offset_transform_position = Vector2(7.896, 0)
@@ -123,12 +187,45 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_svnul")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ru6vo")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ejy1s")
 text = "Throw
-Speed"
+Distance"
 script = ExtResource("1_56tmu")
-upgrade = &"throw_speed"
+upgrade = &"orb_throw_distance"
 price_label = NodePath("PriceLabel")
 
-[node name="PriceLabel" type="Label" parent="VBoxContainer/HBoxContainer/ThrowSpeedUpgrade" unique_id=1875539101]
+[node name="PriceLabel" type="Label" parent="VBoxContainer/HBoxContainer/ThrowDistance" unique_id=112763113]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -39.0
+offset_right = -18.0
+offset_bottom = -11.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 0.7137255, 1)
+theme_override_font_sizes/font_size = 20
+text = "123"
+vertical_alignment = 1
+
+[node name="OrbBounceCount" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=381814054 node_paths=PackedStringArray("price_label")]
+custom_minimum_size = Vector2(172.876, 0)
+layout_mode = 2
+offset_transform_position = Vector2(7.896, 0)
+theme = ExtResource("1_ru6vo")
+theme_override_font_sizes/font_size = 27
+theme_override_styles/normal = SubResource("StyleBoxFlat_svnul")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ru6vo")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ejy1s")
+text = "Orb Max
+Bounces"
+script = ExtResource("1_56tmu")
+upgrade = &"orb_max_bounce_count"
+price_label = NodePath("PriceLabel")
+
+[node name="PriceLabel" type="Label" parent="VBoxContainer/HBoxContainer/OrbBounceCount" unique_id=376565551]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0

@@ -83,7 +83,7 @@ func load_level_num_relatively(relative_level_num: int) -> void:
 
 ## Returns the root node of the **level**, which changes when new levels
 ## are loaded. So, this is not the actual root node of the game.
-func get_level_root_node() -> Node2D:
+func get_level_root_node() -> Node:
 	return _level_instance
 
 
