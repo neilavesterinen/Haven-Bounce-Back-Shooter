@@ -75,7 +75,11 @@ func spawn_from_wave(wave: Wave) -> void:
 	for i in amount:
 		var node_i_to_spawn := randi_range(0, nodes_left_to_spawn.size() - 1)
 
-		var spawned_node: Node2D = nodes_left_to_spawn[node_i_to_spawn].node.instantiate()
+		var spawned_node: Enemy = nodes_left_to_spawn[node_i_to_spawn].node.instantiate()
+		var sethel: int = randi_range(5, 10) + wave_number
+		spawned_node.MAX_HEALTH = sethel
+		spawned_node.health = sethel
+		print("sethel:" + str(sethel))
 		spawned_node_parent.add_child(spawned_node)
 
 		var free_tracker := WaveNodeFreeTracker.new()
@@ -92,7 +96,6 @@ func spawn_from_wave(wave: Wave) -> void:
 
 		if nodes_left_to_spawn.is_empty():
 			return
-
 
 func new_wave() -> void:
 	if wave_index + 1 < waves.size():
