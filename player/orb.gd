@@ -29,6 +29,8 @@ var bounce_dir: Vector2
 
 var exploding: bool = false
 
+var current_speed := BASE_SPEED
+
 @onready var Sprite: Sprite2D = $Sprite2D
 @onready var trail: Line2D = $Sprite2D/Line2D
 @onready var area: Area2D = $Area2D
@@ -71,6 +73,8 @@ func _physics_process(delta: float) -> void:
 	if heading != Vector2.ZERO:
 		linear_velocity = heading * speed
 
+	current_speed = speed
+
 	if (
 		not bouncing_back
 		and global_position.distance_squared_to(target_position) <= CATCH_RADIUS ** 2
@@ -105,16 +109,48 @@ func exploder() -> void:
 	queue_free()
 
 
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	if exploding:
+		return
+
+	for i in state.get_contact_count():
+		var normal := state.get_contact_local_normal(i).normalized()
+		if normal == Vector2.ZERO:
+			continue
+		# Contacts can persist for a frame after the deflection. Only bounce
+		# while the orb is still moving into the surface.
+		if heading.dot(normal) >= 0.0:
+			continue
+
+		var incoming := linear_velocity.normalized()
+		if incoming == Vector2.ZERO:
+			incoming = heading
+
+		bounce_dir = incoming.bounce(normal)
+		if bounce_dir == Vector2.ZERO:
+			bounce_dir = normal
+
+		bounce_elapsed *= 0.75
+		# Wall/object deflections do not use up the enemy bounce count.
+		_bounce()
+		state.linear_velocity = heading * current_speed
+		break
+
+
 func bounce_back() -> void:
 	if not player:
 		return
+	_bounce()
+	linear_velocity = heading * BASE_SPEED
+
+
+func _bounce() -> void:
 	if not bouncing_back:
 		bouncing_back = true
 		bounce_elapsed = 0.0
 	heading = bounce_dir
-	if heading == Vector2.ZERO:
+	if heading == Vector2.ZERO and player:
 		heading = global_position.direction_to(player.global_position)
-	linear_velocity = heading * BASE_SPEED
 
 
 func _on_body_entered(body: Node2D) -> void:

@@ -15,6 +15,7 @@ scale = Vector2(1.6173074, 1.6173074)
 shape = SubResource("CircleShape2D_nxkso")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1014152404]
+collision_layer = 2147483649
 position = Vector2(68, 55.000004)
 rotation = 0.21880427
 
@@ -26,6 +27,7 @@ uv = PackedVector2Array(-184.25397, -1.4690018, -137.06396, -11.149002, -1.54394
 polygon = PackedVector2Array(-184.25397, -1.4690018, -137.06396, -11.149002, -1.5439453, 33.620995, -43.122406, 54.703033, -87.45398, 77.18099, -147.95398, 49.350998, -203.61395, 94.120995, -278.63397, 73.551)
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=2094674290]
+collision_layer = 2147483649
 position = Vector2(-6, 477.00003)
 rotation = 2.3359537
 
@@ -37,6 +39,7 @@ uv = PackedVector2Array(-184.25397, -1.4690018, -137.06396, -11.149002, -1.54394
 polygon = PackedVector2Array(-184.25397, -1.4690018, -137.06396, -11.149002, -1.5439453, 33.620995, -43.122406, 54.703033, -87.45398, 77.18099, -147.95398, 49.350998, -203.61395, 94.120995, -278.63397, 73.551)
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=627065077]
+collision_layer = 2147483649
 position = Vector2(-350, 176.99998)
 rotation = 4.4308243
 

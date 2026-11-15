@@ -3,6 +3,7 @@
 [ext_resource type="Theme" uid="uid://ceeh4w5x06ip" path="res://Scenes/mainmenu/mainmenu.tres" id="1_wg0sj"]
 [ext_resource type="Script" uid="uid://b5vta05hnfxxw" path="res://Scenes/gameover/button.gd" id="2_bnw36"]
 [ext_resource type="Script" uid="uid://bqes5p1vpbbp3" path="res://Scenes/gameover/score.gd" id="3_ktvjo"]
+[ext_resource type="Texture2D" uid="uid://c6use4fskie7i" path="res://Scenes/gameover/game_over.png" id="4_bnw36"]
 
 [sub_resource type="Gradient" id="Gradient_xrme3"]
 colors = PackedColorArray(0.13682577, 0.13682574, 0.13682571, 1, 0.1148968, 0.11489681, 0.1148968, 1)
@@ -55,5 +56,16 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Final Score"
 horizontal_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=219714600]
+layout_mode = 0
+offset_left = 253.0
+offset_top = -63.000008
+offset_right = 1146.0
+offset_bottom = 584.0
+rotation = 0.0855684
+mouse_filter = 2
+texture = ExtResource("4_bnw36")
+expand_mode = 1
 
 [connection signal="pressed" from="TextureRect/Button" to="TextureRect/Button" method="_on_pressed"]
