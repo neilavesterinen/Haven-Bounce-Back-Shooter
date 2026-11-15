@@ -1,3 +1,70 @@
 [gd_scene format=3 uid="uid://ddvnrnae0wauv"]
 
+[ext_resource type="Script" uid="uid://bxq8wfxht042s" path="res://Scenes/game/game.gd" id="1_u7m1m"]
+[ext_resource type="PackedScene" uid="uid://dw74b3kktlfsa" path="res://Scenes/map/map.tscn" id="2_g0siu"]
+[ext_resource type="AudioStream" uid="uid://dpaswaqhcyadu" path="res://Music/exitpremise.mp3" id="2_vjhi1"]
+[ext_resource type="Theme" uid="uid://ceeh4w5x06ip" path="res://Scenes/mainmenu/mainmenu.tres" id="3_vjhi1"]
+
+[sub_resource type="SystemFont" id="SystemFont_g0siu"]
+font_names = PackedStringArray("Sans-Serif")
+
 [node name="Game" type="Node" unique_id=1259405433]
+script = ExtResource("1_u7m1m")
+map = ExtResource("2_g0siu")
+
+[node name="bgmusic" type="AudioStreamPlayer" parent="." unique_id=677884528]
+stream = ExtResource("2_vjhi1")
+autoplay = true
+parameters/looping = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=123703184]
+
+[node name="PointsT" type="SubViewportContainer" parent="CanvasLayer" unique_id=733437173]
+offset_left = 6.0
+offset_top = 485.0
+offset_right = 236.0
+offset_bottom = 715.0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/PointsT" unique_id=1312189219]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(230, 230)
+render_target_update_mode = 4
+
+[node name="Label3D" type="Label3D" parent="CanvasLayer/PointsT/SubViewport" unique_id=958099722]
+transform = Transform3D(0.8963585, 0, 0.44332993, 0, 1, 0, -0.44332993, 0, 0.8963585, 0.12958583, 0, 0)
+text = "0123456789"
+
+[node name="Camera3D" type="Camera3D" parent="CanvasLayer/PointsT/SubViewport" unique_id=1352765730]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5703511)
+
+[node name="StageT" type="SubViewportContainer" parent="CanvasLayer" unique_id=1206747385]
+offset_left = 931.0
+offset_top = 478.0
+offset_right = 1161.0
+offset_bottom = 708.0
+
+[node name="SubViewport2" type="SubViewport" parent="CanvasLayer/StageT" unique_id=1087764191]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(230, 230)
+render_target_update_mode = 4
+
+[node name="Label3D" type="Label3D" parent="CanvasLayer/StageT/SubViewport2" unique_id=1492089115]
+transform = Transform3D(0.86238647, 0, -0.5062505, 0, 1, 0, 0.5062505, 0, 0.86238647, -1.6738793, 0, 0)
+text = "VII
+"
+font = SubResource("SystemFont_g0siu")
+
+[node name="Camera3D" type="Camera3D" parent="CanvasLayer/StageT/SubViewport2" unique_id=796455219]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8034651, 0, 0.5703511)
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=115694266]
+visible = false
+offset_left = -19.0
+offset_top = 586.0
+offset_right = 235.0
+offset_bottom = 640.0
+theme = ExtResource("3_vjhi1")
+text = "0123456789"

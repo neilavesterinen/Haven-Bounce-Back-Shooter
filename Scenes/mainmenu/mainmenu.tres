@@ -26,6 +26,18 @@ shadow_color = Color(0, 0, 0, 0.45882353)
 shadow_size = 1
 anti_aliasing_size = 1.495
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3qg5r"]
+content_margin_left = 47.0
+content_margin_right = 20.0
+bg_color = Color(0, 0.3491902, 0.81178766, 0.5)
+skew = Vector2(0.875, 0)
+border_width_bottom = 6
+border_color = Color(1, 1, 1, 0.5)
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 0.45882353)
+shadow_size = 1
+anti_aliasing_size = 1.495
+
 [resource]
 default_font = ExtResource("1_8c5la")
 Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
@@ -50,3 +62,7 @@ Button/styles/focus = ExtResource("1_f2dox")
 Button/styles/hover = ExtResource("1_f2dox")
 Button/styles/normal = ExtResource("2_3qg5r")
 Button/styles/pressed = SubResource("StyleBoxFlat_f2dox")
+Label/constants/line_spacing = 20
+Label/constants/shadow_offset_x = 1
+Label/font_sizes/font_size = 34
+Label/styles/normal = SubResource("StyleBoxFlat_3qg5r")
