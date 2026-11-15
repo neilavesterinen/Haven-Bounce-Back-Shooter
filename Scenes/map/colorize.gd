@@ -8,14 +8,15 @@ extends StaticBody2D
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
+
 func _ready() -> void:
 	queue_redraw()
 
+
 func _draw() -> void:
-		
-	var shape = collision_shape.shape
-	var offset = collision_shape.position
-	
-	if shape is RectangleShape2D:
-		var rect = Rect2(offset - shape.size / 2.0, shape.size)
+	var offset := collision_shape.position
+
+	var shape: RectangleShape2D = collision_shape.shape as RectangleShape2D
+	if shape:
+		var rect := Rect2(offset - shape.size / 2.0, shape.size)
 		draw_rect(rect, shape_color)

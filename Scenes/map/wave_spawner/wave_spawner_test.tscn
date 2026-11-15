@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://lnbnkgq0vssg"]
 
-[ext_resource type="Script" uid="uid://d28bg3buhu30p" path="res://Scenes/map/wave_spawner/wave_spawner.gd" id="1_y7ajy"]
-[ext_resource type="Script" uid="uid://bqoc6g3unwrl1" path="res://Scenes/map/wave_spawner/wave.gd" id="2_gteyi"]
-[ext_resource type="Script" uid="uid://8t34r8tlnd6q" path="res://Scenes/map/wave_spawner/node_and_amount.gd" id="3_6rrgx"]
+[ext_resource type="Script" uid="uid://b01236epui22e" path="res://Scenes/map/wave_spawner/wave_spawner.gd" id="1_y7ajy"]
+[ext_resource type="Script" uid="uid://b4fkgubw0acrh" path="res://Scenes/map/wave_spawner/wave.gd" id="2_gteyi"]
+[ext_resource type="Script" uid="uid://cd86jqx45pujh" path="res://Scenes/map/wave_spawner/node_and_amount.gd" id="3_6rrgx"]
 [ext_resource type="PackedScene" uid="uid://m3158ygpm4cf" path="res://box.tscn" id="4_yi3ys"]
 [ext_resource type="PackedScene" uid="uid://be3vedgin3xcx" path="res://Scenes/map/spawnables/wall.tscn" id="5_rcgyr"]
 [ext_resource type="PackedScene" uid="uid://cpd1qvk3bc02x" path="res://Scenes/map/spawnables/tri.tscn" id="6_gteyi"]
