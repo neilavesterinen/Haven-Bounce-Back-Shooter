@@ -13,7 +13,8 @@ var enemies: Array
 
 var target_position: Vector2
 
-var bounces := 2
+var bounce_count := 0  # enemy deflections used so far
+var max_bounces := 3
 
 var bouncing_back := false
 
@@ -23,9 +24,26 @@ var heading: Vector2
 
 var bounce_dir: Vector2
 
-@onready var trail: Line2D = $Line2D
 @onready var Sprite: Sprite2D = $Sprite2D
+@onready var trail: Line2D = $Sprite2D/Line2D
+@onready var area: Area2D = $Area2D
 
+@export var explode: PackedScene
+
+
+var exploding: bool = false
+func exploder() -> void:
+	exploding = true
+	var expl: AnimatedSprite2D = explode.instantiate()
+	expl.position = position
+	player.orb_count += 1
+	if Sprite:
+		Sprite.queue_free()
+	if area:
+		area.queue_free()
+	#add_child(expl)
+	# await expl.animation_finished
+	queue_free()
 
 func _ready() -> void:
 	rotate(randi_range(0, 350))
@@ -33,10 +51,11 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if trail.points.size() > 50:
-		trail.remove_point(trail.points.size()-1)
-	trail.add_point(global_position)
-	Sprite.rotate(5 * delta)
+	if exploding: return;
+	if trail:
+		if trail.points.size() > 50:
+			trail.remove_point(0)
+		trail.add_point(global_position)
 
 	var speed: float
 
@@ -60,15 +79,21 @@ func _physics_process(delta: float) -> void:
 		bounce_back()
 
 	if bouncing_back and player and global_position.distance_squared_to(player.global_position) <= CATCH_RADIUS * CATCH_RADIUS:
-		player.orb_count += 1
-		queue_free()
+		exploder()
+	
+	if bounce_count >= max_bounces:
+		print("hit max bounces")
+		modulate = Color("3c3c3c79")
+		trail.gradient.set_color(1, Color("ae5fff5e"))
+		if area:
+			area.queue_free()
 
 
 func bounce_back() -> void:
 	if not player: return
-	if bouncing_back: return
-	bouncing_back = true
-	bounce_elapsed = 0.0
+	if not bouncing_back:
+		bouncing_back = true
+		bounce_elapsed = 0.0
 	heading = bounce_dir
 	if heading == Vector2.ZERO:
 		heading = global_position.direction_to(player.global_position)
@@ -76,15 +101,22 @@ func bounce_back() -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	bounce_elapsed = bounce_elapsed - bounce_elapsed/4
 	if not body is Enemy:
 		return
 	var enemy := body as Enemy
 	enemy.health -= 1
 
+	if max_bounces > 0 and bounce_count >= max_bounces:
+		return
+
 	var normal := (global_position - body.global_position).normalized()
-	var incoming := linear_velocity.normalized()
+	var incoming := heading
+	if incoming == Vector2.ZERO:
+		incoming = linear_velocity.normalized()
 	if incoming == Vector2.ZERO:
 		incoming = global_position.direction_to(target_position)
+
 	bounce_dir = incoming.bounce(normal)
+	bounce_elapsed *= 0.75
+	bounce_count += 1
 	bounce_back()

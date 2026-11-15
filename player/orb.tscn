@@ -1,21 +1,18 @@
 [gd_scene format=3 uid="uid://umirppnct2kf"]
 
 [ext_resource type="Script" uid="uid://d1jarkgnb5njx" path="res://player/orb.gd" id="1_xdlj8"]
-[ext_resource type="Shader" uid="uid://ujvrc7isbx11" path="res://player/orb.gdshader" id="2_g2h0j"]
+[ext_resource type="PackedScene" uid="uid://c2qh7hod53jnk" path="res://player/explode.tscn" id="2_80hed"]
 [ext_resource type="Texture2D" uid="uid://bts5cmqp8s4mi" path="res://player/orb.png" id="2_t05rj"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nxkso"]
-shader = ExtResource("2_g2h0j")
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_xdlj8"]
-radius = 21.0
 
 [sub_resource type="Curve" id="Curve_t05rj"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_nxkso"]
-colors = PackedColorArray(0, 0, 1, 0, 0.681432, 0.37342674, 1, 1)
+colors = PackedColorArray(0, 0, 1, 0, 0.68215865, 0.37187055, 1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xdlj8"]
+radius = 21.0
 
 [node name="Orb" type="RigidBody2D" unique_id=1693876866]
 collision_layer = 2
@@ -24,22 +21,17 @@ gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_xdlj8")
+explode = ExtResource("2_80hed")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1867965121]
-material = SubResource("ShaderMaterial_nxkso")
-position = Vector2(-2, 19.000002)
+z_index = 2
 scale = Vector2(0.041948743, 0.046765022)
 texture = ExtResource("2_t05rj")
-region_rect = Rect2(8.765, 7, 106.235, 113.5)
+region_enabled = true
+region_rect = Rect2(764.7726, 876.01587, 1032.2294, 925.209)
 
-[node name="Area2D" type="Area2D" parent="." unique_id=2109171454]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1611816104]
-shape = SubResource("CircleShape2D_xdlj8")
-
-[node name="Line2D" type="Line2D" parent="." unique_id=1350068218]
+[node name="Line2D" type="Line2D" parent="Sprite2D" unique_id=1350068218]
 top_level = true
-scale = Vector2(0.8826639, 0.91583675)
 width = 30.0
 width_curve = SubResource("Curve_t05rj")
 default_color = Color(0.5802685, 1, 1, 1)
@@ -47,5 +39,11 @@ gradient = SubResource("Gradient_nxkso")
 joint_mode = 1
 begin_cap_mode = 2
 end_cap_mode = 2
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2109171454]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1611816104]
+shape = SubResource("CircleShape2D_xdlj8")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
