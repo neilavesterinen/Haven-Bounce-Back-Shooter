@@ -1,33 +1,33 @@
 [gd_scene format=3 uid="uid://ca3fe5qwrfnmj"]
 
 [ext_resource type="Script" uid="uid://c3g25drac3map" path="res://enemy/enemy.gd" id="1_7k104"]
-[ext_resource type="Texture2D" uid="uid://rr83vynoqgaw" path="res://icon.svg" id="2_4gyqm"]
+[ext_resource type="Texture2D" uid="uid://b7tiu6xpyr7pg" path="res://enemy/enemy.png" id="2_ppra6"]
 [ext_resource type="Script" uid="uid://cmavd3hga2fko" path="res://common/scripts/damage_on_contact.gd" id="3_ppra6"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrcp0"]
-size = Vector2(78, 128)
+[sub_resource type="CircleShape2D" id="CircleShape2D_fownj"]
+radius = 25.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ofsxj"]
-size = Vector2(88.864, 140.695)
+[sub_resource type="CircleShape2D" id="CircleShape2D_kdcb3"]
+radius = 33.0
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1634294982 groups=["enemy"]]
 collision_mask = 3
 script = ExtResource("1_7k104")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=266075212]
-modulate = Color(1, 0, 0, 1)
-scale = Vector2(0.609375, 1)
-texture = ExtResource("2_4gyqm")
+position = Vector2(-13, -5)
+scale = Vector2(0.06209677, 0.06209678)
+texture = ExtResource("2_ppra6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1321509770]
-shape = SubResource("RectangleShape2D_xrcp0")
+shape = SubResource("CircleShape2D_fownj")
 
 [node name="Damage" type="Area2D" parent="." unique_id=1797718684]
 script = ExtResource("3_ppra6")
 damage_team = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Damage" unique_id=1453246104]
-shape = SubResource("RectangleShape2D_ofsxj")
+shape = SubResource("CircleShape2D_kdcb3")
 debug_color = Color(0.7965934, 0.37181562, 0.5403993, 0.41960785)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=162018649]
