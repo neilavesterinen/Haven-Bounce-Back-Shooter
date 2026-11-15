@@ -1,21 +1,36 @@
 [gd_scene format=3 uid="uid://ddvnrnae0wauv"]
 
-[ext_resource type="Script" uid="uid://bxq8wfxht042s" path="res://Scenes/game/game.gd" id="1_u7m1m"]
+[ext_resource type="Script" uid="uid://ccihgip7s3vq4" path="res://Scenes/game/game.gd" id="1_u7m1m"]
 [ext_resource type="PackedScene" uid="uid://dw74b3kktlfsa" path="res://Scenes/map/map.tscn" id="2_g0siu"]
 [ext_resource type="PackedScene" uid="uid://crntnsto002yl" path="res://player/player.tscn" id="3_7pssd"]
 [ext_resource type="Theme" uid="uid://ceeh4w5x06ip" path="res://Scenes/mainmenu/mainmenu.tres" id="3_vjhi1"]
 [ext_resource type="AudioStream" uid="uid://dymxmxaav6h3h" path="res://Music/yea.mp3" id="4_7pssd"]
 [ext_resource type="PackedScene" uid="uid://ca3fe5qwrfnmj" path="res://enemy/enemy.tscn" id="4_d0b77"]
+[ext_resource type="Script" uid="uid://d28bg3buhu30p" path="res://Scenes/map/wave_spawner/wave_spawner.gd" id="6_nds08"]
+[ext_resource type="Script" uid="uid://b4fkgubw0acrh" path="res://Scenes/map/wave_spawner/wave.gd" id="7_5l446"]
+[ext_resource type="Script" uid="uid://cd86jqx45pujh" path="res://Scenes/map/wave_spawner/node_and_amount.gd" id="8_6y3i1"]
 
 [sub_resource type="SystemFont" id="SystemFont_g0siu"]
 font_names = PackedStringArray("Sans-Serif")
 subpixel_positioning = 0
 
-[node name="Game" type="Node" unique_id=1259405433]
+[sub_resource type="Resource" id="Resource_d0b77"]
+script = ExtResource("8_6y3i1")
+node = ExtResource("4_d0b77")
+amount = 5
+
+[sub_resource type="Resource" id="Resource_7pssd"]
+script = ExtResource("7_5l446")
+nodes_and_amounts = Array[ExtResource("8_6y3i1")]([SubResource("Resource_d0b77")])
+spawn_delay_range = Vector2(1, 2.5)
+spawn_group_size_range = Vector2i(1, 2)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5l446"]
+radius = 150.0
+
+[node name="Game" type="Node" unique_id=1259405433 node_paths=PackedStringArray("wave_spawner")]
 script = ExtResource("1_u7m1m")
-map = ExtResource("2_g0siu")
-playersc = ExtResource("3_7pssd")
-enemysc = ExtResource("4_d0b77")
+wave_spawner = NodePath("WaveSpawner")
 
 [node name="bgmusic" type="AudioStreamPlayer" parent="." unique_id=677884528]
 stream = ExtResource("4_7pssd")
@@ -73,3 +88,14 @@ offset_right = 235.0
 offset_bottom = 640.0
 theme = ExtResource("3_vjhi1")
 text = "0123456789"
+
+[node name="Map" parent="." unique_id=1935690632 instance=ExtResource("2_g0siu")]
+
+[node name="Player" parent="." unique_id=1329971783 instance=ExtResource("3_7pssd")]
+
+[node name="WaveSpawner" type="Node2D" parent="." unique_id=1937314124 node_paths=PackedStringArray("spawned_node_parent")]
+script = ExtResource("6_nds08")
+waves = Array[ExtResource("7_5l446")]([SubResource("Resource_7pssd")])
+spawn_pos_clearance_check_shape = SubResource("CircleShape2D_5l446")
+spawn_area = Rect2(-2500, -2500, 5000, 5000)
+spawned_node_parent = NodePath(".")
