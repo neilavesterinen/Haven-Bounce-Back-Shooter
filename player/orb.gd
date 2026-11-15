@@ -1,11 +1,13 @@
-extends RigidBody2D
 class_name Orb
+extends RigidBody2D
 
 const BASE_SPEED := 700.0
 const MAX_SPEED := 1800.0
-const SPEED_GROWTH := 1.6  # speed multiplier gained per second while homing
-const TURN_RATE := 6.0  # minimum radians per second the orb turns toward the player
+const SPEED_GROWTH := 1.6 # speed multiplier gained per second while homing
+const TURN_RATE := 6.0 # minimum radians per second the orb turns toward the player
 const CATCH_RADIUS := 50.0
+
+@export var explode: PackedScene
 
 var player: Player
 
@@ -13,7 +15,7 @@ var enemies: Array
 
 var target_position: Vector2
 
-var bounce_count := 0  # enemy deflections used so far
+var bounce_count := 0 # enemy deflections used so far
 var max_bounces := 3
 
 var bouncing_back := false
@@ -24,26 +26,12 @@ var heading: Vector2
 
 var bounce_dir: Vector2
 
+var exploding: bool = false
+
 @onready var Sprite: Sprite2D = $Sprite2D
 @onready var trail: Line2D = $Sprite2D/Line2D
 @onready var area: Area2D = $Area2D
 
-@export var explode: PackedScene
-
-
-var exploding: bool = false
-func exploder() -> void:
-	exploding = true
-	var expl: AnimatedSprite2D = explode.instantiate()
-	expl.position = position
-	player.orb_count += 1
-	if Sprite:
-		Sprite.queue_free()
-	if area:
-		area.queue_free()
-	#add_child(expl)
-	# await expl.animation_finished
-	queue_free()
 
 func _ready() -> void:
 	rotate(randi_range(0, 350))
@@ -51,7 +39,8 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if exploding: return;
+	if exploding:
+		return
 	if trail:
 		if trail.points.size() > 50:
 			trail.remove_point(0)
@@ -81,13 +70,20 @@ func _physics_process(delta: float) -> void:
 	if heading != Vector2.ZERO:
 		linear_velocity = heading * speed
 
-	if not bouncing_back and global_position.distance_squared_to(target_position) <= CATCH_RADIUS * CATCH_RADIUS:
+	if (
+		not bouncing_back
+		and global_position.distance_squared_to(target_position) <= CATCH_RADIUS * CATCH_RADIUS
+	):
 		bounce_dir = global_position.direction_to(player.global_position)
 		bounce_back()
 
-	if bouncing_back and player and global_position.distance_squared_to(player.global_position) <= CATCH_RADIUS * CATCH_RADIUS:
+	if (
+		bouncing_back and player
+		and global_position.distance_squared_to(player.global_position)
+		<= CATCH_RADIUS * CATCH_RADIUS
+	):
 		exploder()
-	
+
 	if bounce_count >= max_bounces:
 		modulate = Color("3c3c3c79")
 		trail.gradient.set_color(1, Color("ae5fff5e"))
@@ -95,8 +91,23 @@ func _physics_process(delta: float) -> void:
 			area.queue_free()
 
 
+func exploder() -> void:
+	exploding = true
+	var expl: AnimatedSprite2D = explode.instantiate()
+	expl.position = position
+	player.orb_count += 1
+	if Sprite:
+		Sprite.queue_free()
+	if area:
+		area.queue_free()
+	#add_child(expl)
+	# await expl.animation_finished
+	queue_free()
+
+
 func bounce_back() -> void:
-	if not player: return
+	if not player:
+		return
 	if not bouncing_back:
 		bouncing_back = true
 		bounce_elapsed = 0.0
@@ -110,7 +121,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if not body is Enemy:
 		return
 	var enemy := body as Enemy
-	enemy.health -= 1
+	enemy.take_damage(1)
 
 	if max_bounces > 0 and bounce_count >= max_bounces:
 		return
