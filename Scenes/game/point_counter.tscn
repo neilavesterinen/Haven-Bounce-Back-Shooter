@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://paan3sdyedo0"]
+
+[ext_resource type="Script" uid="uid://duh0wvvqybqa3" path="res://Scenes/game/point_label.gd" id="1_pbri5"]
+
+[node name="PointsT" type="SubViewportContainer" unique_id=1101408104]
+offset_left = 6.0
+offset_top = 485.0
+offset_right = 236.0
+offset_bottom = 715.0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1823713467]
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="Label3D" type="Label3D" parent="SubViewport" unique_id=932911020]
+transform = Transform3D(0.8963585, 0, 0.44332993, 0, 1, 0, -0.44332993, 0, 0.8963585, 0.12958583, 0, 0)
+text = "0123456789"
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=37092613]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5703511)
+
+[node name="PointUpdater" type="Node" parent="." unique_id=1000078137 node_paths=PackedStringArray("label")]
+script = ExtResource("1_pbri5")
+label = NodePath("../SubViewport/Label3D")

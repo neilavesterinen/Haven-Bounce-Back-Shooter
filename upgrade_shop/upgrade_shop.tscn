@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://cdnyw3kbutq8b"]
 
-[ext_resource type="Script" uid="uid://dwrkken2kj51t" path="res://upgrade_shop/upgrade_purchase_button.gd" id="1_56tmu"]
+[ext_resource type="Script" uid="uid://c5us4vlp7nbst" path="res://upgrade_shop/upgrade_purchase_button.gd" id="1_56tmu"]
 [ext_resource type="Theme" uid="uid://c3ncu5c4bs85t" path="res://main_theme.theme" id="1_ru6vo"]
+[ext_resource type="Script" uid="uid://beecw5qat2odv" path="res://common/scripts/glue_functions/glue_funcs_level_load.gd" id="3_svnul"]
+[ext_resource type="PackedScene" uid="uid://paan3sdyedo0" path="res://Scenes/game/point_counter.tscn" id="4_ejy1s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_svnul"]
 bg_color = Color(0.70980394, 0.60784316, 0.76862746, 0.972549)
@@ -41,6 +43,48 @@ corner_radius_top_right = 38
 corner_detail = 20
 shadow_color = Color(0.39215687, 0.078431375, 0.74509805, 0.07058824)
 shadow_size = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5teet"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.85, 0.60066664, 0.51000005, 1)
+border_width_left = 13
+border_color = Color(0.97, 0.7850534, 0.7566, 1)
+corner_radius_top_left = 29
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mcqm0"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.640481, 0.4592799, 0.47621417, 0.6)
+border_width_left = 13
+border_color = Color(0.97, 0.7850534, 0.7566, 1)
+corner_radius_top_left = 29
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8475x"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.92, 0.65688, 0.5612, 0.6039216)
+border_width_left = 13
+border_color = Color(0.97, 0.7850534, 0.7566, 1)
+corner_radius_top_left = 29
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 20
 
 [node name="UpgradeShop" type="Control" unique_id=1262347264]
 layout_mode = 3
@@ -101,3 +145,41 @@ theme_override_colors/font_color = Color(1, 1, 0.7137255, 1)
 theme_override_font_sizes/font_size = 20
 text = "123"
 vertical_alignment = 1
+
+[node name="BackToGameButton" type="Button" parent="." unique_id=691678381]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -82.0
+offset_top = -82.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("1_ru6vo")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_5teet")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mcqm0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8475x")
+text = ">"
+
+[node name="GlueFuncsLevelLoad" type="Node" parent="BackToGameButton" unique_id=1897478748]
+script = ExtResource("3_svnul")
+
+[node name="PointsT" parent="." unique_id=1101408104 instance=ExtResource("4_ejy1s")]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 493.0
+offset_right = 241.0
+offset_bottom = 723.0
+
+[node name="SubViewport" parent="PointsT" index="0" unique_id=1823713467]
+size = Vector2i(230, 230)
+
+[node name="Label3D" parent="PointsT/SubViewport" index="0" unique_id=932911020]
+transform = Transform3D(0.9960928, 0, 0.08831233, 0, 1, 0, -0.08831233, 0, 0.9960928, 0.010109633, 0, 0)
+
+[connection signal="pressed" from="BackToGameButton" to="BackToGameButton/GlueFuncsLevelLoad" method="load_level_num_relatively_transition_delay" binds= [-1, 0.0, true]]
+
+[editable path="PointsT"]
