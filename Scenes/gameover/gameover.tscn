@@ -28,9 +28,9 @@ texture = SubResource("GradientTexture2D_nxkso")
 
 [node name="Button" type="Button" parent="TextureRect" unique_id=2056550081]
 layout_mode = 0
-offset_left = -27.0
+offset_left = -42.0
 offset_top = 544.0
-offset_right = 579.0
+offset_right = 564.0
 offset_bottom = 612.0
 theme = ExtResource("1_wg0sj")
 text = "Back to Main Menu"
