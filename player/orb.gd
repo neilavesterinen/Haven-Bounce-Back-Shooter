@@ -89,7 +89,6 @@ func _physics_process(delta: float) -> void:
 		exploder()
 	
 	if bounce_count >= max_bounces:
-		print("hit max bounces")
 		modulate = Color("3c3c3c79")
 		trail.gradient.set_color(1, Color("ae5fff5e"))
 		if area:
