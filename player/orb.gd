@@ -13,7 +13,11 @@ var bouncing_back := false
 
 var speed_increase_time := 0.0
 
-var bounces := 2
+@export var MAX_BOUNCES := 2
+
+var bounces := MAX_BOUNCES
+
+@export var RANGE := 100
 
 
 func _process(delta: float) -> void:
@@ -76,16 +80,12 @@ func _on_body_entered(body: Enemy) -> void:
 			if player:
 				apply_impulse(global_position.direction_to(player.global_position) * 200)
 		else:
-			var closest_distance:float
+			var closest_distance:float = RANGE
 			var closest_enemy:Node2D
 			for enemy:Node2D in enemies:
 				if enemy != body:
-					if !closest_distance:
-						closest_distance = global_position.distance_to(enemy.global_position)
-						closest_enemy = enemy
-					elif global_position.distance_to(enemy.global_position) < closest_distance:
-						closest_distance = global_position.distance_to(enemy.global_position)
-						closest_enemy = enemy
+					closest_distance = global_position.distance_to(enemy.global_position)
+					closest_enemy = enemy
 			if closest_enemy:
 				linear_velocity /= 2
 				target_node = closest_enemy
