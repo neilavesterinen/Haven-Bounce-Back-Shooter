@@ -8,21 +8,18 @@ radius = 21.0
 
 [node name="Orb" type="RigidBody2D" unique_id=1693876866]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 0
 gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_xdlj8")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1867965121]
-position = Vector2(-2, 19.000002)
-scale = Vector2(0.0452495, 0.045249507)
-texture = ExtResource("2_t05rj")
-region_rect = Rect2(8.765, 7, 106.235, 113.5)
-
-[node name="Area2D" type="Area2D" parent="." unique_id=2109171454]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1611816104]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1611816104]
 shape = SubResource("CircleShape2D_xdlj8")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1416821035]
+position = Vector2(-0.9999924, 18)
+scale = Vector2(0.038709678, 0.043675277)
+texture = ExtResource("2_t05rj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

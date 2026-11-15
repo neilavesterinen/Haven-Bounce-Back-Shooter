@@ -19,10 +19,6 @@ config/icon="res://icon.svg"
 
 GameState="*uid://b8wivnhyoarqb"
 UpgradeManager="*uid://bc12lhcf1rxw0"
-LevelManager="*uid://bxrag2lqckbb5"
-TransitionManager="*uid://ch0nah582l38w"
-LevelManagerHelper="*uid://bng0pv0r0ax0l"
-GodotUtils="*uid://d08ba8uh1qwsq"
 
 [debug]
 

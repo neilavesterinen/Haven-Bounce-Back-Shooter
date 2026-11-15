@@ -8,11 +8,14 @@
 [node name="Player" parent="." unique_id=1329971783 instance=ExtResource("1_uhqqe")]
 position = Vector2(546, 345)
 
-[node name="Enemy" parent="." unique_id=1634294982 instance=ExtResource("2_ia1lp")]
+[node name="Enemy" parent="." unique_id=1634294982 node_paths=PackedStringArray("player") instance=ExtResource("2_ia1lp")]
 position = Vector2(930, 119)
+player = NodePath("../Player")
 
-[node name="Enemy2" parent="." unique_id=432867009 instance=ExtResource("2_ia1lp")]
+[node name="Enemy2" parent="." unique_id=432867009 node_paths=PackedStringArray("player") instance=ExtResource("2_ia1lp")]
 position = Vector2(187, 145)
+player = NodePath("../Player")
 
-[node name="Enemy3" parent="." unique_id=887688118 instance=ExtResource("2_ia1lp")]
+[node name="Enemy3" parent="." unique_id=887688118 node_paths=PackedStringArray("player") instance=ExtResource("2_ia1lp")]
 position = Vector2(1001, 491)
+player = NodePath("../Player")
