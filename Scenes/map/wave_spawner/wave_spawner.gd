@@ -2,6 +2,8 @@
 class_name WaveSpawner
 extends Node2D
 
+signal wave_changed(new_wave_number: int)
+
 @export var waves: Array[Wave]
 
 @export var spawn_pos_clearance_check_shape: Shape2D
@@ -93,6 +95,7 @@ func new_wave() -> void:
 		wave_number += 1
 
 	nodes_left_to_spawn = waves[wave_number].duplicate_nodes_and_amounts()
+	wave_changed.emit(wave_number)
 
 
 func find_valid_spawn_pos() -> Vector2:
