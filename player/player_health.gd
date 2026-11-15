@@ -1,5 +1,5 @@
-extends Node
 class_name PlayerHealth
+extends Node
 
 signal health_changed(new_health: int)
 signal died
@@ -26,7 +26,12 @@ func die() -> void:
 
 	died.emit()
 
-	LevelManagerHelper.load_level_num_relatively_transition(1)
+	if GameState.points >= GameState.point_limit:
+		LevelManagerHelper.load_level_num_relatively_transition(1)
+	else:
+		GameState.point_limit = 0
+		LevelManagerHelper.load_level_num_relatively_transition(2)
+
 	if player_parent:
 		player_parent.queue_free()
 

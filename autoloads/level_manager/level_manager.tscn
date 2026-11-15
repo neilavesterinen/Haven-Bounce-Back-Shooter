@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bxrag2lqckbb5"]
 
-[ext_resource type="Script" uid="uid://b2lu8jihle8c7" path="res://autoloads/level_manager/level_manager.gd" id="1_v3u8m"]
+[ext_resource type="Script" uid="uid://civ0bomao8wda" path="res://autoloads/level_manager/level_manager.gd" id="1_v3u8m"]
 
 [node name="LevelManager" type="Node" unique_id=859127138]
 script = ExtResource("1_v3u8m")
-levels = Array[String](["uid://b7hi1a0r6apgs", "uid://ddvnrnae0wauv", "uid://cdnyw3kbutq8b"])
+levels = Array[String](["uid://b7hi1a0r6apgs", "uid://ddvnrnae0wauv", "uid://cdnyw3kbutq8b", "uid://d07kcon5kra5j"])
