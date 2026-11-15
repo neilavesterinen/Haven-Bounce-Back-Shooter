@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cq0pwispmmltm" path="res://Scenes/mainmenu/mainmenu.gd" id="1_83ksl"]
 [ext_resource type="Theme" uid="uid://c3ncu5c4bs85t" path="res://main_theme.theme" id="1_vasse"]
 [ext_resource type="Script" uid="uid://bg75ucid01t6d" path="res://Scenes/mainmenu/label.gd" id="2_552u2"]
+[ext_resource type="Texture2D" uid="uid://rjdrughfoy1e" path="res://Scenes/mainmenu/menu_backart.png" id="2_u1uln"]
 [ext_resource type="Theme" uid="uid://ceeh4w5x06ip" path="res://Scenes/mainmenu/mainmenu.tres" id="3_dkbu7"]
 [ext_resource type="Script" uid="uid://bq61u1k3g782" path="res://Scenes/mainmenu/quit.gd" id="4_ktvea"]
 [ext_resource type="AudioStream" uid="uid://dpaswaqhcyadu" path="res://Music/exitpremise.mp3" id="5_58l34"]
@@ -17,12 +18,17 @@ offset_right = 1153.0
 offset_bottom = 1153.0
 color = Color(0.2520276, 0.25202766, 0.25202763, 1)
 
+[node name="MenuBackart" type="Sprite2D" parent="." unique_id=1076695535]
+position = Vector2(579, 402)
+scale = Vector2(0.32883063, 0.32883063)
+texture = ExtResource("2_u1uln")
+
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=506499756]
-offset_left = -119.00001
-offset_top = -65.0
-offset_right = 1270.7833
-offset_bottom = 176.01315
-rotation = -0.06587538
+offset_left = -201.0
+offset_top = 3.9999924
+offset_right = 1188.7833
+offset_bottom = 245.01315
+rotation = -0.23736478
 scale = Vector2(0.9955796, 1.0424879)
 color = Color(0, 0, 0, 1)
 
