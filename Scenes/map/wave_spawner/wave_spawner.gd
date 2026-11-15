@@ -21,8 +21,7 @@ var wave_index: int
 # Wave number rises even if the last wave is duplicated
 var wave_number: int
 
-# For some reasons unknown, having this as 0 and immediately spwaning nodes breaks the freeing tracking
-var spawn_cooldown: float = 1.0
+var spawn_cooldown: float = 0.2
 
 var _clearance_check_query: PhysicsShapeQueryParameters2D
 
