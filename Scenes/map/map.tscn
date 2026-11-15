@@ -2,8 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dvqkokn7366uf" path="res://Scenes/map/map.gd" id="1_jhl4n"]
 [ext_resource type="Shader" uid="uid://btk1hf5455ig" path="res://Scenes/map/checkerboard.gdshader" id="2_xjp1v"]
-[ext_resource type="PackedScene" uid="uid://ca3fe5qwrfnmj" path="res://enemy/enemy.tscn" id="3_xjp1v"]
-[ext_resource type="PackedScene" uid="uid://crntnsto002yl" path="res://player/player.tscn" id="4_q2yfs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q5it0"]
 shader = ExtResource("2_xjp1v")
@@ -110,14 +108,3 @@ navigation_polygon = SubResource("NavigationPolygon_nxkso")
 
 [node name="Navigation" type="NavigationRegion2D" parent="." unique_id=1573960272]
 navigation_polygon = SubResource("NavigationPolygon_vcy0d")
-
-[node name="Enemy" parent="." unique_id=1634294982 instance=ExtResource("3_xjp1v")]
-position = Vector2(1290, -351)
-
-[node name="Enemy2" parent="." unique_id=2125955232 instance=ExtResource("3_xjp1v")]
-position = Vector2(1287, -100)
-
-[node name="Enemy3" parent="." unique_id=1215502127 instance=ExtResource("3_xjp1v")]
-position = Vector2(1284, 234)
-
-[node name="Player" parent="." unique_id=1329971783 instance=ExtResource("4_q2yfs")]

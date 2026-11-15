@@ -65,7 +65,7 @@ func _process(delta: float) -> void:
 				queue_free()
 
 
-func _on_body_entered(body: EnemyNode) -> void:
+func _on_body_entered(body: Enemy) -> void:
 	if body.is_in_group("enemy"):
 		if body.take_damage:
 			body.take_damage(1)

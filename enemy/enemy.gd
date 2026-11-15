@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name EnemyNode
+class_name Enemy
 
 var MAX_HEALTH := 5
 var SPEED := 100
