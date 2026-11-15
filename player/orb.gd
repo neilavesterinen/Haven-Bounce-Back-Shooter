@@ -4,7 +4,7 @@ class_name Orb
 const BASE_SPEED := 700.0
 const MAX_SPEED := 1800.0
 const SPEED_GROWTH := 1.6  # speed multiplier gained per second while homing
-const TURN_RATE := 6.0  # radians per second the orb turns toward the player
+const TURN_RATE := 6.0  # minimum radians per second the orb turns toward the player
 const CATCH_RADIUS := 50.0
 
 var player: Player
