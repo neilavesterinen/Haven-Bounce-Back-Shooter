@@ -3,7 +3,7 @@ class_name Player
 
 const SPEED := 300.0
 
-@export_file("*.tscn") var __orb_file: String
+@export var orbsc: PackedScene
 
 @export var weapon_node: Node2D
 
@@ -34,13 +34,14 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("click") and orb_count:
 		orb_count -= 1
-		var orb_scene: PackedScene = load(__orb_file)
 
-		var orb_node: Orb = orb_scene.instantiate()
+		var orb_node: Orb = orbsc.instantiate()
 
 		orb_node.player = self
-		orb_node.position = self.position
-		orb_node.target_position = Vector2(400,0).rotated(weapon_node.rotation) + self.position
-		orb_node.apply_impulse(orb_node.global_position.direction_to(orb_node.target_position) * 1000)
-		
+		orb_node.target_position = global_position + Vector2(400, 0).rotated(weapon_node.global_rotation)
+
 		get_tree().root.add_child(orb_node)
+
+		# RigidBody2D only accepts impulses once it is inside the tree.
+		orb_node.global_position = global_position
+		orb_node.apply_impulse(orb_node.global_position.direction_to(orb_node.target_position) * 1000)

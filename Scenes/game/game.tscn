@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bxq8wfxht042s" path="res://Scenes/game/game.gd" id="1_u7m1m"]
 [ext_resource type="PackedScene" uid="uid://dw74b3kktlfsa" path="res://Scenes/map/map.tscn" id="2_g0siu"]
 [ext_resource type="AudioStream" uid="uid://dpaswaqhcyadu" path="res://Music/exitpremise.mp3" id="2_vjhi1"]
+[ext_resource type="PackedScene" uid="uid://crntnsto002yl" path="res://player/player.tscn" id="3_7pssd"]
 [ext_resource type="Theme" uid="uid://ceeh4w5x06ip" path="res://Scenes/mainmenu/mainmenu.tres" id="3_vjhi1"]
 
 [sub_resource type="SystemFont" id="SystemFont_g0siu"]
@@ -12,6 +13,7 @@ subpixel_positioning = 0
 [node name="Game" type="Node" unique_id=1259405433]
 script = ExtResource("1_u7m1m")
 map = ExtResource("2_g0siu")
+playersc = ExtResource("3_7pssd")
 
 [node name="bgmusic" type="AudioStreamPlayer" parent="." unique_id=677884528]
 stream = ExtResource("2_vjhi1")

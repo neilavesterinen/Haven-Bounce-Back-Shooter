@@ -20,7 +20,7 @@ func _ready() -> void:
 	enemies = get_tree().get_nodes_in_group("enemy")
 
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if bouncing_back:
 		speed_increase_time += delta
 
@@ -38,40 +38,35 @@ func _process(delta: float) -> void:
 
 	apply_force(velocity)
 
-	if (
-		global_position.x < target_position.x + 50
-		and global_position.x > target_position.x - 50
-		and global_position.y < target_position.y + 50 and global_position.y
-		> target_position.y - 50
-	):
-		#if bounces == 0:
-		bouncing_back = true
-		set_axis_velocity(Vector2())
-		if player:
-			apply_impulse(global_position.direction_to(player.global_position) * 400)
-		#else:
-		#	target_position = enemies[0].position
-		#	bounces -= 1
+	if not bouncing_back and _is_at(target_position):
+		bounce_back()
 
-	if bouncing_back and player:
-		if (
-			global_position.x < player.position.x + 50
-			and global_position.x > player.position.x - 50
-			and global_position.y < player.position.y + 50
-			and global_position.y > player.position.y - 50
-		):
-			player.orb_count += 1
-			queue_free()
+	if bouncing_back and player and _is_at(player.global_position):
+		player.orb_count += 1
+		queue_free()
 
 
-func _on_body_entered(body: Enemy) -> void:
-	if body.is_in_group("enemy"):
-		body.health -= 1
-		#if bounces == 0:
-		bouncing_back = true
-		set_axis_velocity(Vector2())
-		if player:
-			apply_impulse(global_position.direction_to(player.global_position) * 400)
-		#else:
-		#target_position = enemies[0].position
-		#bounces -= 1
+func _is_at(point: Vector2) -> bool:
+	return (
+		global_position.x < point.x + 50
+		and global_position.x > point.x - 50
+		and global_position.y < point.y + 50
+		and global_position.y > point.y - 50
+	)
+
+
+func bounce_back() -> void:
+	if not player:
+		return
+	bouncing_back = true
+	set_axis_velocity(Vector2())
+	apply_impulse(global_position.direction_to(player.global_position) * 400)
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if not body is Enemy:
+		return
+	var enemy := body as Enemy
+	enemy.health -= 1
+	if not bouncing_back:
+		bounce_back()
