@@ -1,25 +1,20 @@
 extends CharacterBody2D
-class_name Enemy
+class_name EnemyNode
 
 var MAX_HEALTH := 5
-var SPEED := 10
+var SPEED := 100
 
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 
 var health := MAX_HEALTH
-var player : Player
+@export var player : Player
 
 func _ready() -> void:
 	nav_agent.path_desired_distance = 4.0
 	nav_agent.target_desired_distance = 4.0
 	player = get_tree().get_first_node_in_group("player")
 
-func take_damage(damage:int) -> void:
-	health -= 1
-	modulate.a = 1.0 / MAX_HEALTH * health
-	if health == 0:
-		queue_free()
-	
+func _process(delta: float) -> void:
 	if not player:
 		return
 	
@@ -37,3 +32,9 @@ func take_damage(damage:int) -> void:
 	# If using NavigationAgent2D avoidance, pass it to velocity; otherwise directly move
 	velocity = new_velocity
 	move_and_slide()
+
+func take_damage(damage:int) -> void:
+	health -= 1
+	modulate.a = 1.0 / MAX_HEALTH * health
+	if health == 0:
+		queue_free()

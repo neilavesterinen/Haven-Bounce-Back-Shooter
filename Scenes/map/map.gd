@@ -16,7 +16,7 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 func _ready() -> void:
 	print("Map.gd ready!")
 	
-func generate_map():
+func generate_map() -> void:
 	if random_buildings.is_empty():
 		print("empty random buildings")
 		return

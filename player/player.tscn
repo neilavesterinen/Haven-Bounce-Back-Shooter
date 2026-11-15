@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bts5cmqp8s4mi" path="res://player/orb.png" id="4_qjkh3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
-size = Vector2(70, 130)
+size = Vector2(52, 52)
 
 [node name="Player" type="CharacterBody2D" unique_id=1329971783 node_paths=PackedStringArray("weapon_node", "orb_sprite", "orb_spawn") groups=["player"]]
 motion_mode = 1
@@ -16,6 +16,8 @@ orb_scene = ExtResource("2_g1dw6")
 weapon_node = NodePath("Weapon")
 orb_sprite = NodePath("Weapon/Sprite2D2")
 orb_spawn = NodePath("Weapon/SpawnPosition")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=673169927]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=886923626]
 shape = SubResource("RectangleShape2D_onrkg")

@@ -34,12 +34,16 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("click") and orb_count:
 		orb_count -= 1
+		
+		var target_node: Node2D = Node2D.new()
+		get_tree().root.add_child(target_node)
+		target_node.position = Vector2(300,0).rotated(weapon_node.rotation) + self.position
 
 		var orb_node: Orb = orb_scene.instantiate()
-
+		
 		orb_node.player = self
 		orb_node.position = orb_spawn.global_position
-		orb_node.target_position = Vector2(300,0).rotated(weapon_node.rotation) + self.position
-		orb_node.apply_impulse(orb_node.global_position.direction_to(orb_node.target_position) * 1000)
+		orb_node.target_node = target_node
+		orb_node.apply_impulse(orb_node.global_position.direction_to(orb_node.target_node.global_position) * 1000)
 		
 		get_tree().root.add_child(orb_node)
