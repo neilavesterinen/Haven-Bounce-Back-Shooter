@@ -30,7 +30,6 @@ texture = SubResource("GradientTexture1D_nxkso")
 collision_layer = 2147483649
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1863459815]
-position = Vector2(0, 138)
+position = Vector2(0, 73)
 scale = Vector2(7.955501, 0.5199999)
 shape = SubResource("RectangleShape2D_nxkso")
-

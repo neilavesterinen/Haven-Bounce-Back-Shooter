@@ -2,7 +2,6 @@ extends ProgressBar
 
 @export var player_health: PlayerHealth
 
-
 func _ready() -> void:
 	if player_health == null:
 		player_health = _find_player_health()
