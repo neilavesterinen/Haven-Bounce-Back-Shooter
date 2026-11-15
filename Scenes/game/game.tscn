@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://ca3fe5qwrfnmj" path="res://enemy/enemy.tscn" id="4_d0b77"]
 [ext_resource type="PackedScene" uid="uid://dofiltal2y31t" path="res://Scenes/game/HealthT.tscn" id="5_health"]
 [ext_resource type="Script" uid="uid://d28bg3buhu30p" path="res://Scenes/map/wave_spawner/wave_spawner.gd" id="6_nds08"]
-[ext_resource type="Script" uid="uid://b4fkgubw0acrh" path="res://Scenes/map/wave_spawner/wave.gd" id="7_5l446"]
-[ext_resource type="Script" uid="uid://cd86jqx45pujh" path="res://Scenes/map/wave_spawner/node_and_amount.gd" id="8_6y3i1"]
+[ext_resource type="Script" uid="uid://bqoc6g3unwrl1" path="res://Scenes/map/wave_spawner/wave.gd" id="7_5l446"]
+[ext_resource type="Script" uid="uid://8t34r8tlnd6q" path="res://Scenes/map/wave_spawner/node_and_amount.gd" id="8_6y3i1"]
 [ext_resource type="Script" uid="uid://c3g25drac3map" path="res://enemy/enemy.gd" id="11_ii7ab"]
 [ext_resource type="Texture2D" uid="uid://rr83vynoqgaw" path="res://icon.svg" id="12_hxkax"]
 [ext_resource type="Script" uid="uid://cmavd3hga2fko" path="res://common/scripts/damage_on_contact.gd" id="13_7rk1p"]
@@ -27,8 +27,8 @@ amount = 5
 [sub_resource type="Resource" id="Resource_7pssd"]
 script = ExtResource("7_5l446")
 nodes_and_amounts = Array[ExtResource("8_6y3i1")]([SubResource("Resource_d0b77")])
-spawn_delay_range = Vector2(1, 2.5)
-spawn_group_size_range = Vector2i(1, 2)
+spawn_delay_range = Vector2(0.25, 1.5)
+spawn_group_size_range = Vector2i(2, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrcp0"]
 size = Vector2(78, 128)
@@ -60,7 +60,7 @@ amount = 8
 script = ExtResource("7_5l446")
 nodes_and_amounts = Array[ExtResource("8_6y3i1")]([SubResource("Resource_2wwbv")])
 spawn_delay_range = Vector2(0.5, 1.5)
-spawn_group_size_range = Vector2i(2, 2)
+spawn_group_size_range = Vector2i(3, 7)
 
 [sub_resource type="PackedScene" id="PackedScene_ii7ab"]
 _bundled = {
@@ -86,6 +86,7 @@ amount = 12
 script = ExtResource("7_5l446")
 nodes_and_amounts = Array[ExtResource("8_6y3i1")]([SubResource("Resource_hxkax")])
 spawn_delay_range = Vector2(0.3, 0.5)
+spawn_group_size_range = Vector2i(4, 8)
 
 [sub_resource type="PackedScene" id="PackedScene_hxkax"]
 _bundled = {
@@ -110,8 +111,8 @@ amount = 15
 [sub_resource type="Resource" id="Resource_2kyel"]
 script = ExtResource("7_5l446")
 nodes_and_amounts = Array[ExtResource("8_6y3i1")]([SubResource("Resource_jbxxx")])
-spawn_delay_range = Vector2(3, 5)
-spawn_group_size_range = Vector2i(4, 4)
+spawn_delay_range = Vector2(1, 2)
+spawn_group_size_range = Vector2i(6, 15)
 
 [sub_resource type="PackedScene" id="PackedScene_7rk1p"]
 _bundled = {
@@ -136,8 +137,8 @@ amount = 15
 [sub_resource type="Resource" id="Resource_ai5tx"]
 script = ExtResource("7_5l446")
 nodes_and_amounts = Array[ExtResource("8_6y3i1")]([SubResource("Resource_hy3pq")])
-spawn_delay_range = Vector2(2.5, 3.5)
-spawn_group_size_range = Vector2i(2, 4)
+spawn_delay_range = Vector2(0.25, 1)
+spawn_group_size_range = Vector2i(2, 10)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5l446"]
 radius = 150.0
