@@ -1,13 +1,21 @@
 [gd_scene format=3 uid="uid://dofiltal2y31t"]
 
+[ext_resource type="Theme" uid="uid://ceeh4w5x06ip" path="res://Scenes/mainmenu/mainmenu.tres" id="1_bkykp"]
 [ext_resource type="Script" uid="uid://bwfsbljjw500x" path="res://Scenes/game/healthbar.gd" id="1_health"]
 
 [node name="HealthT" type="ProgressBar" unique_id=722604490]
-offset_left = 24.0
-offset_top = 24.0
-offset_right = 324.0
-offset_bottom = 64.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -64.0
+offset_right = 150.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_bkykp")
 max_value = 3.0
 value = 3.0
-show_percentage = false
 script = ExtResource("1_health")

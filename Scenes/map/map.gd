@@ -15,6 +15,7 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print("Map.gd ready!")
+	generate_map()
 	
 func generate_map() -> void:
 	if random_buildings.is_empty():
