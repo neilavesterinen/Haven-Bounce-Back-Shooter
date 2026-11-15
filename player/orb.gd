@@ -29,14 +29,18 @@ func _process(delta: float) -> void:
 		target = player.global_position
 	else:
 		target = target_position
-	var velocity := Vector2(0.0, 0.0)
-	var direction: Vector2 = global_position.direction_to(target)
 
+	var direction: Vector2 = Vector2.from_angle(lerp_angle(global_position.direction_to(target).angle(), linear_velocity.angle() + PI, 0.3))
 	var distance := global_position.distance_to(target)
+	var force := Vector2(0.0, 0.0)
 	if direction:
-		velocity = direction * SPEED * distance * (1 + speed_increase_time * 100)
+		force = direction * SPEED * distance * (1 + speed_increase_time * 100)
+	
+	if distance > 1000:
+		player.orb_count += 1
+		queue_free()
 
-	apply_force(velocity)
+	apply_force(force)
 
 	if (
 		global_position.x < target_position.x + 50

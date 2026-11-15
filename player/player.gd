@@ -1,9 +1,9 @@
 extends CharacterBody2D
 class_name Player
 
-const SPEED := 300.0
+@export var SPEED := 700.0
 
-@export_file("*.tscn") var __orb_file: String
+@export var orb_scene: PackedScene
 
 @export var weapon_node: Node2D
 
@@ -34,13 +34,12 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("click") and orb_count:
 		orb_count -= 1
-		var orb_scene: PackedScene = load(__orb_file)
 
 		var orb_node: Orb = orb_scene.instantiate()
 
 		orb_node.player = self
 		orb_node.position = self.position
-		orb_node.target_position = Vector2(400,0).rotated(weapon_node.rotation) + self.position
+		orb_node.target_position = Vector2(300,0).rotated(weapon_node.rotation) + self.position
 		orb_node.apply_impulse(orb_node.global_position.direction_to(orb_node.target_position) * 1000)
 		
 		get_tree().root.add_child(orb_node)
