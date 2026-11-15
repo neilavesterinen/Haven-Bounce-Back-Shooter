@@ -60,6 +60,7 @@ text = "Play"
 script = ExtResource("5_u1uln")
 
 [node name="Settings" type="Button" parent="Control/VBoxContainer" unique_id=1042635005]
+visible = false
 layout_mode = 2
 theme = ExtResource("3_dkbu7")
 text = "Settings"
