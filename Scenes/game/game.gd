@@ -7,6 +7,7 @@ enum GameStates {
 }
 
 @export var wave_spawner: WaveSpawner
+@export var point_limit_increase_per_game: int = 3
 
 @onready var stagetext: Label3D = $CanvasLayer/StageT/SubViewport2/Label3D
 
@@ -45,6 +46,7 @@ func _ready() -> void:
 	_on_wave_changed(0)
 
 	GameState.points = 0
+	GameState.point_limit += point_limit_increase_per_game
 
 	wave_spawner.wave_changed.connect(_on_wave_changed)
 

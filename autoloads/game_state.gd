@@ -2,6 +2,8 @@ extends Node
 
 signal points_changed(new_points: int)
 
+var point_limit: int = 0
+
 var points: int = 0:
 	set(value):
 		points = value
