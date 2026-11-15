@@ -17,10 +17,9 @@ func _ready() -> void:
 func _on_pressed() -> void:
 	if GameState.points < _upgrade_state.price():
 		return
-
-	_upgrade_state.level_up()
 	GameState.points -= _upgrade_state.price()
 
+	_upgrade_state.level_up()
 	_update_price()
 
 

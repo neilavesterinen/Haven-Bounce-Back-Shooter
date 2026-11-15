@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ccihgip7s3vq4" path="res://Scenes/game/game.gd" id="1_u7m1m"]
 [ext_resource type="PackedScene" uid="uid://dw74b3kktlfsa" path="res://Scenes/map/map.tscn" id="2_g0siu"]
+[ext_resource type="PackedScene" uid="uid://paan3sdyedo0" path="res://Scenes/game/point_counter.tscn" id="3_6y3i1"]
 [ext_resource type="PackedScene" uid="uid://crntnsto002yl" path="res://player/player.tscn" id="3_7pssd"]
 [ext_resource type="Theme" uid="uid://ceeh4w5x06ip" path="res://Scenes/mainmenu/mainmenu.tres" id="3_vjhi1"]
 [ext_resource type="AudioStream" uid="uid://dymxmxaav6h3h" path="res://Music/yea.mp3" id="4_7pssd"]
@@ -39,25 +40,7 @@ parameters/looping = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=123703184]
 
-[node name="PointsT" type="SubViewportContainer" parent="CanvasLayer" unique_id=733437173]
-offset_left = 6.0
-offset_top = 485.0
-offset_right = 236.0
-offset_bottom = 715.0
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="CanvasLayer/PointsT" unique_id=1312189219]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(230, 230)
-render_target_update_mode = 4
-
-[node name="Label3D" type="Label3D" parent="CanvasLayer/PointsT/SubViewport" unique_id=958099722]
-transform = Transform3D(0.8963585, 0, 0.44332993, 0, 1, 0, -0.44332993, 0, 0.8963585, 0.12958583, 0, 0)
-text = "0123456789"
-
-[node name="Camera3D" type="Camera3D" parent="CanvasLayer/PointsT/SubViewport" unique_id=1352765730]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5703511)
+[node name="PointsT" parent="CanvasLayer" unique_id=1101408104 instance=ExtResource("3_6y3i1")]
 
 [node name="StageT" type="SubViewportContainer" parent="CanvasLayer" unique_id=1206747385]
 offset_left = 931.0

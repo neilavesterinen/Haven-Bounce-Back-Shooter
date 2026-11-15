@@ -25,7 +25,7 @@ func die() -> void:
 
 	died.emit()
 
-	LevelManagerHelper.load_current_level_transition()
+	LevelManagerHelper.load_level_num_relatively_transition(1)
 	if player_parent:
 		player_parent.queue_free()
 

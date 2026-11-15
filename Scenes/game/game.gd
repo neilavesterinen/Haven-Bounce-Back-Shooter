@@ -8,7 +8,6 @@ enum GameStates {
 
 @export var wave_spawner: WaveSpawner
 
-@onready var pointstext: Label3D = $CanvasLayer/PointsT/SubViewport/Label3D
 @onready var stagetext: Label3D = $CanvasLayer/StageT/SubViewport2/Label3D
 
 
@@ -43,15 +42,11 @@ static func int_to_roman(num: int) -> String:
 
 
 func _ready() -> void:
-	_on_points_changed(0)
 	_on_wave_changed(0)
 
-	GameState.points_changed.connect(_on_points_changed)
+	GameState.points = 0
+
 	wave_spawner.wave_changed.connect(_on_wave_changed)
-
-
-func _on_points_changed(new_points: int) -> void:
-	pointstext.text = str(new_points).pad_zeros(9)
 
 
 func _on_wave_changed(new_wave: int) -> void:
