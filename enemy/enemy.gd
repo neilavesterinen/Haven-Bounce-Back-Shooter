@@ -10,6 +10,8 @@ var health := MAX_HEALTH
 
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 
+@export var sprite : Sprite2D
+
 
 func _ready() -> void:
 	nav_agent.path_desired_distance = 4.0
@@ -31,6 +33,9 @@ func _process(_delta: float) -> void:
 
 	# Calculate velocity toward the next waypoint
 	var new_velocity: Vector2 = current_agent_position.direction_to(next_path_position) * SPEED
+	
+	sprite.look_at(next_path_position)
+	sprite.rotate(PI/2)
 
 	# If using NavigationAgent2D avoidance, pass it to velocity; otherwise directly move
 	velocity = new_velocity
