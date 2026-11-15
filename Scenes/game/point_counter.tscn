@@ -19,12 +19,6 @@ render_target_update_mode = 4
 transform = Transform3D(0.8963585, 0, 0.44332993, 0, 1, 0, -0.44332993, 0, 0.8963585, 0.12958583, 0, 0)
 text = "0123456789"
 
-[node name="need" type="Label3D" parent="SubViewport" unique_id=155010874]
-transform = Transform3D(0.8963585, 0, 0.44332993, 0, 1, 0, -0.44332993, 0, 0.8963585, -0.30363315, 0.16988583, 0.09019646)
-text = "Need: 0123456789"
-font_size = 25
-horizontal_alignment = 0
-
 [node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=37092613]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5703511)
 
