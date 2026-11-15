@@ -1,3 +1,4 @@
+class_name Attribute
 extends Resource
 
 @export var connected_upgrade: StringName
