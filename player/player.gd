@@ -6,6 +6,8 @@ class_name Player
 @export var orb_scene: PackedScene
 
 @export var weapon_node: Node2D
+@export var orb_sprite: Node2D
+@export var orb_spawn: Node2D
 
 var orb_count := 1
 
@@ -22,15 +24,13 @@ func _physics_process(delta: float) -> void:
 			velocity.y = move_toward(velocity.y, 0, SPEED)
 
 	move_and_slide()
-
+	
 	weapon_node.look_at(get_global_mouse_position())
 	
 	if !orb_count:
-		var weapon_sprite : Sprite2D = weapon_node.get_children()[0]
-		weapon_sprite.visible = orb_count
+		orb_sprite.visible = orb_count
 	else:
-		var weapon_sprite : Sprite2D = weapon_node.get_children()[0]
-		weapon_sprite.visible = orb_count
+		orb_sprite.visible = orb_count
 
 	if Input.is_action_just_pressed("click") and orb_count:
 		orb_count -= 1
@@ -38,7 +38,7 @@ func _physics_process(delta: float) -> void:
 		var orb_node: Orb = orb_scene.instantiate()
 
 		orb_node.player = self
-		orb_node.position = self.position
+		orb_node.position = orb_spawn.global_position
 		orb_node.target_position = Vector2(300,0).rotated(weapon_node.rotation) + self.position
 		orb_node.apply_impulse(orb_node.global_position.direction_to(orb_node.target_position) * 1000)
 		

@@ -16,10 +16,6 @@ var speed_increase_time := 0.0
 var bounces := 2
 
 
-func _ready() -> void:
-	enemies = get_tree().get_nodes_in_group("enemy")
-
-
 func _process(delta: float) -> void:
 	if bouncing_back:
 		speed_increase_time += delta
@@ -70,12 +66,27 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Enemy) -> void:
 	if body.is_in_group("enemy"):
-		body.health -= 1
-		#if bounces == 0:
-		bouncing_back = true
-		set_axis_velocity(Vector2())
-		if player:
-			apply_impulse(global_position.direction_to(player.global_position) * 400)
-		#else:
-		#target_position = enemies[0].position
-		#bounces -= 1
+		if body.take_damage:
+			body.take_damage(1)
+			enemies = get_tree().get_nodes_in_group("enemy")
+		if bounces == 0:
+			bouncing_back = true
+			linear_velocity /= 10
+			if player:
+				apply_impulse(global_position.direction_to(player.global_position) * 200)
+		else:
+			var closest_distance:float
+			var closest_enemy:Node2D
+			for enemy:Node2D in enemies:
+				if enemy != body:
+					if !closest_distance:
+						closest_distance = global_position.distance_to(enemy.global_position)
+						closest_enemy = enemy
+					elif global_position.distance_to(enemy.global_position) < closest_distance:
+						closest_distance = global_position.distance_to(enemy.global_position)
+						closest_enemy = enemy
+			if closest_enemy:
+				linear_velocity /= 2
+				target_position = closest_enemy.position
+				apply_impulse(global_position.direction_to(target_position) * 300)
+			bounces -= 1

@@ -9,8 +9,8 @@ var player : Player
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 
-func _process(delta: float) -> void:
+func take_damage(damage:int) -> void:
+	health -= 1
 	modulate.a = 1.0 / MAX_HEALTH * health
-	
 	if health == 0:
 		queue_free()
