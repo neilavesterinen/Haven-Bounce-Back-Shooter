@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://umirppnct2kf"]
 
 [ext_resource type="Script" uid="uid://d1jarkgnb5njx" path="res://player/orb.gd" id="1_xdlj8"]
+[ext_resource type="Shader" uid="uid://ujvrc7isbx11" path="res://player/orb.gdshader" id="2_g2h0j"]
 [ext_resource type="Texture2D" uid="uid://bts5cmqp8s4mi" path="res://player/orb.png" id="2_t05rj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nxkso"]
+shader = ExtResource("2_g2h0j")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xdlj8"]
 radius = 21.0
@@ -22,8 +26,9 @@ max_contacts_reported = 1
 script = ExtResource("1_xdlj8")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1867965121]
+material = SubResource("ShaderMaterial_nxkso")
 position = Vector2(-2, 19.000002)
-scale = Vector2(0.0452495, 0.045249507)
+scale = Vector2(0.041948743, 0.046765022)
 texture = ExtResource("2_t05rj")
 region_rect = Rect2(8.765, 7, 106.235, 113.5)
 
