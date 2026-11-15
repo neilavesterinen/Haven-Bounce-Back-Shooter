@@ -1,21 +1,40 @@
 [gd_scene format=3 uid="uid://bc12lhcf1rxw0"]
 
 [ext_resource type="Script" uid="uid://bra7cedw8xlx8" path="res://autoloads/upgrade_manager/upgrade_manager.gd" id="1_e8g8g"]
-[ext_resource type="Script" uid="uid://io38gkndc12b" path="res://upgrade_shop/upgrade.gd" id="2_elkpn"]
-
-[sub_resource type="Resource" id="Resource_nmq5w"]
-script = ExtResource("2_elkpn")
-name = &"throw_speed"
-starting_price = 10.0
-price_increase_multiplier = 1.2
+[ext_resource type="Script" uid="uid://io38gkndc12b" path="res://Scenes/upgrade_shop/upgrade.gd" id="2_elkpn"]
 
 [sub_resource type="Resource" id="Resource_5l446"]
+resource_name = "max_health"
 script = ExtResource("2_elkpn")
 name = &"max_health"
-starting_price = 15.0
+starting_price = 4.0
 price_increase_multiplier = 1.3
+metadata/_custom_type_script = "uid://io38gkndc12b"
+
+[sub_resource type="Resource" id="Resource_ejy1s"]
+resource_name = "damage"
+script = ExtResource("2_elkpn")
+name = &"damage"
+starting_price = 15.0
+price_increase_multiplier = 1.5
+metadata/_custom_type_script = "uid://io38gkndc12b"
+
+[sub_resource type="Resource" id="Resource_5teet"]
+resource_name = "orb_throw_distance"
+script = ExtResource("2_elkpn")
+name = &"orb_throw_distance"
+starting_price = 5.0
+price_increase_multiplier = 1.2
+metadata/_custom_type_script = "uid://io38gkndc12b"
+
+[sub_resource type="Resource" id="Resource_mcqm0"]
+resource_name = "orb_max_bounce_count"
+script = ExtResource("2_elkpn")
+name = &"orb_max_bounce_count"
+starting_price = 10.0
+price_increase_multiplier = 1.5
 metadata/_custom_type_script = "uid://io38gkndc12b"
 
 [node name="UpgradeManager" type="Node" unique_id=1160552505]
 script = ExtResource("1_e8g8g")
-upgrades = Array[ExtResource("2_elkpn")]([SubResource("Resource_nmq5w"), SubResource("Resource_5l446")])
+upgrades = Array[ExtResource("2_elkpn")]([SubResource("Resource_5l446"), SubResource("Resource_ejy1s"), SubResource("Resource_5teet"), SubResource("Resource_mcqm0")])

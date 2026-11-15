@@ -1,7 +1,8 @@
-extends CharacterBody2D
 class_name Player
+extends CharacterBody2D
 
 @export var SPEED := 700.0
+@export var throw_distance: Attribute
 
 @export var orb_scene: PackedScene
 
@@ -13,7 +14,8 @@ var orb_count := 1
 
 var health := 10
 
-func _physics_process(delta: float) -> void:
+
+func _physics_process(_delta: float) -> void:
 	var direction := Input.get_vector("left", "right", "up", "down")
 	if direction:
 		velocity = direction * SPEED
@@ -24,9 +26,9 @@ func _physics_process(delta: float) -> void:
 			velocity.y = move_toward(velocity.y, 0, SPEED)
 
 	move_and_slide()
-	
+
 	weapon_node.look_at(get_global_mouse_position())
-	
+
 	if !orb_count:
 		orb_sprite.visible = orb_count
 	else:
@@ -37,7 +39,10 @@ func _physics_process(delta: float) -> void:
 
 		var orb_node: Orb = orb_scene.instantiate()
 		orb_node.player = self
-		orb_node.target_position = orb_spawn.global_position + Vector2(400, 0).rotated(weapon_node.global_rotation)
+		orb_node.target_position = orb_spawn.global_position + Vector2(
+			throw_distance.get_value_float(),
+			0,
+		).rotated(weapon_node.global_rotation)
 
 		get_tree().root.add_child(orb_node)
 		orb_node.global_position = orb_spawn.global_position

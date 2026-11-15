@@ -7,7 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://bts5cmqp8s4mi" path="res://player/orb.png" id="4_qjkh3"]
 [ext_resource type="Script" uid="uid://cqskt154x6qro" path="res://common/scripts/interface_like/damageable/damageable_ext.gd" id="6_g6k8r"]
 [ext_resource type="Script" uid="uid://br8i36eukrxwy" path="res://player/player_health.gd" id="7_rgyib"]
-[ext_resource type="Script" uid="uid://ddqn6q6ugwa1" path="res://upgrade_shop/attribute.gd" id="8_hg6s5"]
+[ext_resource type="Script" uid="uid://ddqn6q6ugwa1" path="res://Scenes/upgrade_shop/attribute.gd" id="8_hg6s5"]
+
+[sub_resource type="Resource" id="Resource_e8g8g"]
+script = ExtResource("8_hg6s5")
+connected_upgrade = &"orb_throw_distance"
+base_value = 400.0
+per_level_addition = 20.0
+per_level_multiplier_addition = 0.01
+metadata/_custom_type_script = "uid://ddqn6q6ugwa1"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rgyib"]
 radius = 33.64
@@ -25,6 +33,7 @@ metadata/_custom_type_script = "uid://ddqn6q6ugwa1"
 [node name="Player" type="CharacterBody2D" unique_id=1329971783 node_paths=PackedStringArray("weapon_node", "orb_sprite", "orb_spawn") groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_onrkg")
+throw_distance = SubResource("Resource_e8g8g")
 orb_scene = ExtResource("2_g1dw6")
 weapon_node = NodePath("Weapon")
 orb_sprite = NodePath("Weapon/Sprite2D2")
