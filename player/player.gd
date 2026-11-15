@@ -8,10 +8,9 @@ class_name Player
 @export var weapon_node: Node2D
 @export var orb_sprite: Node2D
 @export var orb_spawn: Node2D
+@export var player_health: PlayerHealth
 
 var orb_count := 1
-
-var health := 10
 
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_vector("left", "right", "up", "down")

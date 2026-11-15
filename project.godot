@@ -26,6 +26,7 @@ TransitionManager="*uid://ch0nah582l38w"
 LevelManagerHelper="*uid://bng0pv0r0ax0l"
 GodotUtils="*uid://d08ba8uh1qwsq"
 Controlla="*uid://b3to7he12wmrq"
+Gameoverinfo="*uid://g23ow4dh43ig"
 
 [debug]
 

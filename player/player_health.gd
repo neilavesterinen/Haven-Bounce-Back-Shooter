@@ -1,4 +1,5 @@
 extends Node
+class_name PlayerHealth
 
 signal health_changed(new_health: int)
 signal died

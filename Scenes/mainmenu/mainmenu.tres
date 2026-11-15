@@ -3,6 +3,7 @@
 [ext_resource type="FontFile" uid="uid://cd30nr2e1p14v" path="res://Firjar/static/Firjar-ExtraBold.ttf" id="1_8c5la"]
 [ext_resource type="StyleBox" uid="uid://ygquf8dqugfy" path="res://Scenes/mainmenu/skewfocus.tres" id="1_f2dox"]
 [ext_resource type="StyleBox" uid="uid://c82g1roj70jic" path="res://Scenes/mainmenu/skewbutton.tres" id="2_3qg5r"]
+[ext_resource type="StyleBox" uid="uid://cn6fj521smsg2" path="res://Scenes/game/asdsadasd.tres" id="3_3qg5r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tu6qf"]
 content_margin_left = 4.0
@@ -38,6 +39,12 @@ shadow_color = Color(0, 0, 0, 0.45882353)
 shadow_size = 1
 anti_aliasing_size = 1.495
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ke8yq"]
+bg_color = Color(0.83196884, 0.0019352413, 0.9870941, 0.54901963)
+skew = Vector2(1, 0)
+border_color = Color(1, 0, 0.17184411, 0.49400002)
+border_blend = true
+
 [resource]
 default_font = ExtResource("1_8c5la")
 Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
@@ -66,3 +73,6 @@ Label/constants/line_spacing = 20
 Label/constants/shadow_offset_x = 1
 Label/font_sizes/font_size = 34
 Label/styles/normal = SubResource("StyleBoxFlat_3qg5r")
+ProgressBar/font_sizes/font_size = 31
+ProgressBar/styles/background = ExtResource("3_3qg5r")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_ke8yq")
