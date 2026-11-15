@@ -11,7 +11,7 @@ var health := MAX_HEALTH
 var player : Player
 
 func flash_red() -> void:
-	
+	pass
 
 func _ready() -> void:
 	nav_agent.path_desired_distance = 4.0

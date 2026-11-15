@@ -23,7 +23,7 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-	weapon_node.look_at(get_global_mouse_position())
+	look_at(get_global_mouse_position())
 	
 	if !orb_count:
 		var weapon_sprite : Sprite2D = weapon_node.get_children()[0]
@@ -42,6 +42,4 @@ func _physics_process(delta: float) -> void:
 
 		get_tree().root.add_child(orb_node)
 
-		# RigidBody2D only accepts impulses once it is inside the tree.
 		orb_node.global_position = global_position
-		orb_node.apply_impulse(orb_node.global_position.direction_to(orb_node.target_position) * 1000)

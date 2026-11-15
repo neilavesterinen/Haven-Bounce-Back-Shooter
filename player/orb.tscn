@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://umirppnct2kf"]
 
-[ext_resource type="Texture2D" uid="uid://rr83vynoqgaw" path="res://icon.svg" id="1_ogqpy"]
 [ext_resource type="Script" uid="uid://d1jarkgnb5njx" path="res://player/orb.gd" id="1_xdlj8"]
+[ext_resource type="Texture2D" uid="uid://bts5cmqp8s4mi" path="res://player/orb.png" id="2_t05rj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xdlj8"]
 radius = 21.0
@@ -15,10 +15,14 @@ max_contacts_reported = 1
 script = ExtResource("1_xdlj8")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1867965121]
-scale = Vector2(0.328125, 0.328125)
-texture = ExtResource("1_ogqpy")
+position = Vector2(-2, 19.000002)
+scale = Vector2(0.0452495, 0.045249507)
+texture = ExtResource("2_t05rj")
+region_rect = Rect2(8.765, 7, 106.235, 113.5)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1611816104]
+[node name="Area2D" type="Area2D" parent="." unique_id=2109171454]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1611816104]
 shape = SubResource("CircleShape2D_xdlj8")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

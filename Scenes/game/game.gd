@@ -1,8 +1,5 @@
 extends Node
 
-@export var map: PackedScene
-@export var playersc: PackedScene
-
 var points: int = 0
 var points_display_pending: int = 0
 var defaultpt: int = 000000000

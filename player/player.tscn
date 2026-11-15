@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://crntnsto002yl"]
 
-[ext_resource type="Texture2D" uid="uid://rr83vynoqgaw" path="res://icon.svg" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://d3x6jqklktwda" path="res://player/player.gd" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://umirppnct2kf" path="res://player/orb.tscn" id="2_orb"]
+[ext_resource type="Texture2D" uid="uid://db8vxl82h0hwg" path="res://player/player.png" id="3_yw30f"]
+[ext_resource type="Texture2D" uid="uid://bts5cmqp8s4mi" path="res://player/orb.png" id="4_yw30f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
-size = Vector2(70, 130)
+size = Vector2(102, 84)
 
 [node name="Player" type="CharacterBody2D" unique_id=1329971783 node_paths=PackedStringArray("weapon_node") groups=["player"]]
 motion_mode = 1
@@ -14,17 +15,21 @@ orbsc = ExtResource("2_orb")
 weapon_node = NodePath("Weapon")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1965854626]
-scale = Vector2(0.546875, 1)
-texture = ExtResource("1_4flbx")
+rotation = 1.5707964
+scale = Vector2(0.04758065, 0.05004289)
+texture = ExtResource("3_yw30f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=886923626]
+position = Vector2(-11, 5)
 shape = SubResource("RectangleShape2D_onrkg")
 
 [node name="Weapon" type="Node2D" parent="." unique_id=2048745159]
 
-[node name="Sprite2D2" type="Sprite2D" parent="Weapon" unique_id=433746732]
-position = Vector2(25, 0)
-scale = Vector2(0.24999997, 0.24999999)
-texture = ExtResource("1_4flbx")
+[node name="Sprite2D2" type="Sprite2D" parent="Weapon" unique_id=17239750]
+position = Vector2(-2.9999995, 4)
+rotation = 1.5707964
+scale = Vector2(0.0452495, 0.045249507)
+texture = ExtResource("4_yw30f")
+region_rect = Rect2(8.765, 7, 106.235, 113.5)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=776224649]
